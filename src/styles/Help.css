@@ -445,7 +445,6 @@
   overflow: hidden;
   text-align: left;
   width: 100%;
-  cursor: pointer;
 }
 
 .help-faq-card__head {
@@ -455,6 +454,14 @@
   padding: 16px 18px;
   width: 100%;
   box-sizing: border-box;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .help-faq-card__icon {
@@ -580,6 +587,10 @@
 .help-page--dark .help-faq-card {
   background: #2a2a2a;
   border-color: rgba(255, 255, 255, 0.12);
+}
+
+.help-page--dark .help-faq-card__head {
+  background: transparent;
 }
 
 .help-page--dark .help-faq-card__text h3,

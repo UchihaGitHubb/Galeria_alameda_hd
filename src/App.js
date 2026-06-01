@@ -19,6 +19,8 @@ import Home from "./pages/Home";
 import Map from "./pages/Map";
 import Zones from "./pages/Zones";
 import VendorDetail from "./pages/VendorDetail";
+import VendorMessage from "./pages/VendorMessage";
+import VendorShare from "./pages/VendorShare";
 import Favorites from "./pages/Favorites";
 import Menu from "./pages/Menu";
 import Settings from "./pages/Settings";
@@ -62,6 +64,8 @@ export default function App() {
             <Route path="/zones" element={<Zones />} />
             <Route path="/routes" element={<RoutesPage />} />
             <Route path="/vendor/:id" element={<VendorDetail />} />
+            <Route path="/vendor/:id/message" element={<VendorMessage />} />
+            <Route path="/vendor/:id/share" element={<VendorShare />} />
             <Route path="/search" element={<Search />} />
             <Route path="/search/:mode" element={<CategorySearch />} />
             <Route path="/favorites" element={<Favorites />} />

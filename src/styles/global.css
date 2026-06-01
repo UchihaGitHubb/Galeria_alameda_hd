@@ -53,6 +53,7 @@ body.dark-theme * {
 body.dark-theme .menu-page,
 body.dark-theme .favorites-page,
 body.dark-theme .vendor-detail-page,
+body.dark-theme .vendor-actions-page,
 body.dark-theme .map-page,
 body.dark-theme .home-page {
   background: #1b1b1b !important;

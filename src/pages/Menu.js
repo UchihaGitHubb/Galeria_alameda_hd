@@ -8,6 +8,8 @@ import { Heart, MapPinned, CircleHelp, Settings, LogOut } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
+import profileAvatar from "../assets/profile/profile-avatar-anime.png";
+
 import "../styles/Menu.css";
 
 export default function Menu() {
@@ -19,7 +21,9 @@ export default function Menu() {
     <MobileContainer background={darkMode ? "#1B1B1B" : "#F1ECE3"}>
       <div className={`menu-page ${darkMode ? "menu-dark" : ""}`}>
         <div className="profile-section">
-          <div className="profile-avatar" />
+          <div className="profile-avatar">
+            <img src={profileAvatar} alt="" />
+          </div>
 
           <div className="profile-info">
             <h2>Isabella Perilla</h2>

@@ -200,12 +200,18 @@ export default function VendorDetail() {
           <div className="section-divider" />
 
           <div className="action-buttons">
-            <button>
+            <button
+              type="button"
+              onClick={() => navigate(`/vendor/${vendor.id}/message`)}
+            >
               <MessageCircle size={18} />
               {t.vendor.comment}
             </button>
 
-            <button>
+            <button
+              type="button"
+              onClick={() => navigate(`/vendor/${vendor.id}/share`)}
+            >
               <Share2 size={18} />
               {t.vendor.share}
             </button>
