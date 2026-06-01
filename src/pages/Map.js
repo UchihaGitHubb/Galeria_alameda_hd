@@ -91,6 +91,7 @@ export default function Map() {
   const location = useLocation();
 
   const accentColor = darkMode ? "#FFFFFF" : "#D47D55";
+  const controlIconColor = "#FFFFFF";
   const mapBg = darkMode ? "#1B1B1B" : "#F1ECE3";
 
   const activateVendorRoute = useCallback((vendor) => {
@@ -355,7 +356,7 @@ export default function Map() {
                   <LocateFixed
                     size={18}
                     strokeWidth={2.3}
-                    color={accentColor}
+                    color={controlIconColor}
                   />
                 </button>
 
@@ -365,7 +366,7 @@ export default function Map() {
                   onClick={handleCompass}
                   aria-label="Brújula"
                 >
-                  <Compass size={18} strokeWidth={2.3} color={accentColor} />
+                  <Compass size={18} strokeWidth={2.3} color={controlIconColor} />
                 </button>
 
                 <div className="zoom-group">

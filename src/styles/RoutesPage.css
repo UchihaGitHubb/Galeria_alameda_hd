@@ -13,14 +13,14 @@
 .routes-page__header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 24px 16px 12px;
+  gap: 12px;
+  padding: 14px 14px 6px;
   flex-shrink: 0;
 }
 
 .routes-page__back {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border: none;
   border-radius: 50%;
   background: #d9774a;
@@ -29,12 +29,13 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .routes-page__header h1 {
   margin: 0;
   font-family: "Quicksand", sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: #d9774a;
 }
@@ -42,8 +43,22 @@
 .routes-page__content {
   flex: 1;
   overflow-y: auto;
-  padding: 0 12px 100px;
+  padding: 0 10px 92px;
   -webkit-overflow-scrolling: touch;
+}
+
+.routes-page__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.routes-page__map-wrap,
+.routes-page__cards-wrap {
+  line-height: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff8f0;
 }
 
 .routes-page__map,
@@ -51,14 +66,19 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  background: transparent;
-}
-
-.routes-page__cards {
-  margin-top: 16px;
+  margin: 0;
+  border: 0;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .routes-page--dark .routes-page__header h1 {
   color: #fff;
+}
+
+.routes-page--dark .routes-page__map-wrap,
+.routes-page--dark .routes-page__cards-wrap {
+  background: #1b1b1b;
 }

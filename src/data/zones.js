@@ -1,6 +1,9 @@
-import mapaZonas from "../assets/zones/mapa-zonas.transparent.png";
+import mapaZonasLight from "../assets/zones/mapa-zonas.display.png";
+import mapaZonasDark from "../assets/zones/mapa-zonas.display-dark.png";
 
-export const mapaZonasImage = mapaZonas;
+export function getMapaZonasImage(darkMode) {
+  return darkMode ? mapaZonasDark : mapaZonasLight;
+}
 
 export const ZONE_PILLS = [
   {

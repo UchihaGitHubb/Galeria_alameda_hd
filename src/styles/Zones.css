@@ -13,14 +13,14 @@
 .zones-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 28px 20px 12px;
+  gap: 12px;
+  padding: 14px 14px 6px;
   flex-shrink: 0;
 }
 
 .zones-back-button {
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border: none;
   border-radius: 50%;
   background: #d37049;
@@ -36,7 +36,7 @@
   margin: 0;
   color: #d37049;
   font-family: "Quicksand", sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1.1;
 }
@@ -45,51 +45,60 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 16px 100px;
+  padding: 0 10px 92px;
   -webkit-overflow-scrolling: touch;
 }
 
 .zones-map-wrap {
   position: relative;
   width: 100%;
-  margin: 0 auto 20px;
+  margin: 0 0 8px;
+  line-height: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fef9f0;
 }
 
 .zones-map-image {
   display: block;
   width: 100%;
   height: auto;
-  background: transparent;
+  margin: 0;
+  border: 0;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
-/* Brújula — referencia: N arriba, E izquierda, S abajo, O derecha */
 .zones-compass {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 58px;
-  height: 58px;
+  top: 4px;
+  right: 4px;
+  width: 52px;
+  height: 52px;
   pointer-events: none;
+  line-height: 1;
 }
 
 .zones-compass__ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #d37049;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .zones-compass__needle {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   transform: rotate(-12deg);
   display: block;
 }
@@ -97,7 +106,7 @@
 .zones-compass__label {
   position: absolute;
   font-family: "DistressedSherlock", "Quicksand", sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: normal;
   color: #d37049;
   line-height: 1;
@@ -127,38 +136,43 @@
   transform: translateY(-50%);
 }
 
-/* Lista de zonas — pastillas HTML como el diseño */
 .zones-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-bottom: 8px;
+  gap: 7px;
+  padding-bottom: 4px;
 }
 
 .zones-pill {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 46px;
-  padding: 0 18px 0 0;
+  min-height: 44px;
+  padding: 0 14px 0 0;
   border: none;
   border-radius: 999px;
   background: var(--zone-color);
   cursor: pointer;
   text-align: left;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(90, 70, 53, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.zones-pill:active {
+  transform: scale(0.99);
 }
 
 .zones-pill__number {
   flex-shrink: 0;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   margin: 0;
   border-radius: 50%;
   background: #ffffff;
   color: var(--zone-number);
   font-family: "Quicksand", sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -168,15 +182,14 @@
 
 .zones-pill__label {
   flex: 1;
-  padding: 8px 0 8px 12px;
+  padding: 6px 0 6px 10px;
   color: var(--zone-text);
   font-family: "Quicksand", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-/* Modo oscuro */
 .zones-page--dark .zones-header-title {
   color: #ffffff;
 }
@@ -184,6 +197,10 @@
 .zones-page--dark .zones-back-button {
   background: #ffffff;
   color: #d37049;
+}
+
+.zones-page--dark .zones-map-wrap {
+  background: #1b1b1b;
 }
 
 .zones-page--dark .zones-compass__ring {

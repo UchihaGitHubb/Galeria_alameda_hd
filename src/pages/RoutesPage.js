@@ -3,8 +3,10 @@ import { ChevronLeft } from "lucide-react";
 
 import MobileContainer from "../components/MobileContainer";
 import BottomNav from "../components/BottomNav";
-import mapaRutas from "../assets/routes/mapa-rutas.transparent.png";
-import rutasScroll from "../assets/routes/ruta-cards-scroll.transparent.png";
+import mapaRutasLight from "../assets/routes/mapa-rutas.display.png";
+import mapaRutasDark from "../assets/routes/mapa-rutas.display-dark.png";
+import rutasScrollLight from "../assets/routes/ruta-cards-scroll.display.png";
+import rutasScrollDark from "../assets/routes/ruta-cards-scroll.display-dark.png";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -14,6 +16,8 @@ export default function RoutesPage() {
   const navigate = useNavigate();
   const { darkMode } = useTheme();
   const { t } = useLanguage();
+  const mapaRutas = darkMode ? mapaRutasDark : mapaRutasLight;
+  const rutasScroll = darkMode ? rutasScrollDark : rutasScrollLight;
 
   return (
     <MobileContainer background={darkMode ? "#1B1B1B" : "#FFF8F0"}>
@@ -31,16 +35,24 @@ export default function RoutesPage() {
         </header>
 
         <div className="routes-page__content">
-          <img
-            src={mapaRutas}
-            alt={t.routesPage.mapAlt}
-            className="routes-page__map"
-          />
-          <img
-            src={rutasScroll}
-            alt={t.routesPage.cardsAlt}
-            className="routes-page__cards"
-          />
+          <section className="routes-page__stack">
+            <div className="routes-page__map-wrap">
+              <img
+                src={mapaRutas}
+                alt={t.routesPage.mapAlt}
+                className="routes-page__map"
+                decoding="async"
+              />
+            </div>
+            <div className="routes-page__cards-wrap">
+              <img
+                src={rutasScroll}
+                alt={t.routesPage.cardsAlt}
+                className="routes-page__cards"
+                decoding="async"
+              />
+            </div>
+          </section>
         </div>
 
         <BottomNav />

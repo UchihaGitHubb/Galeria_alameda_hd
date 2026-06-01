@@ -3,7 +3,7 @@ import { ChevronLeft } from "lucide-react";
 
 import MobileContainer from "../components/MobileContainer";
 import BottomNav from "../components/BottomNav";
-import { mapaZonasImage, ZONE_PILLS } from "../data/zones";
+import { getMapaZonasImage, ZONE_PILLS } from "../data/zones";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -13,6 +13,7 @@ export default function Zones() {
   const navigate = useNavigate();
   const { darkMode } = useTheme();
   const { t } = useLanguage();
+  const mapaZonasImage = getMapaZonasImage(darkMode);
 
   const handleZoneSelect = (zoneId) => {
     navigate("/map", { state: { selectedZone: zoneId, openFilters: true } });
@@ -40,6 +41,7 @@ export default function Zones() {
               src={mapaZonasImage}
               alt={t.zonesPage.mapAlt}
               className="zones-map-image"
+              decoding="async"
             />
 
             <div className="zones-compass" aria-hidden="true">
