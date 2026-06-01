@@ -1,0 +1,168 @@
+.zones-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fef9f0;
+}
+
+.zones-page--dark {
+  background: #1b1b1b;
+}
+
+.zones-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 20px 12px;
+  flex-shrink: 0;
+}
+
+.zones-back-button {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #d37049;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zones-header-title {
+  margin: 0;
+  color: #d37049;
+  font-family: "Quicksand", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.zones-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 16px 100px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.zones-map-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+.zones-map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.zones-compass {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 52px;
+  height: 52px;
+  pointer-events: none;
+}
+
+.zones-compass__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #d37049;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.zones-compass__label {
+  position: absolute;
+  font-family: "Quicksand", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: #d37049;
+  line-height: 1;
+}
+
+.zones-compass__label--n {
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.zones-compass__label--e {
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.zones-compass__label--s {
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.zones-compass__label--o {
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.zones-compass__needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 14px solid #ffffff;
+  transform: translate(-50%, -72%) rotate(45deg);
+  transform-origin: center bottom;
+}
+
+.zones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 8px;
+}
+
+.zones-pill-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.zones-pill-btn img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.zones-page--dark .zones-header-title {
+  color: #ffffff;
+}
+
+.zones-page--dark .zones-back-button {
+  background: #ffffff;
+  color: #d37049;
+}
+
+.zones-page--dark .zones-compass__ring {
+  background: #ffffff;
+}
+
+.zones-page--dark .zones-compass__label {
+  color: #ffffff;
+}
+
+.zones-page--dark .zones-compass__needle {
+  border-bottom-color: #d37049;
+}

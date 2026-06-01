@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaEnvelope, FaRedo } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function CheckEmail() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -28,7 +30,6 @@ export default function CheckEmail() {
             boxSizing: "border-box",
           }}
         >
-          {/* Header */}
           <div
             style={{
               display: "flex",
@@ -64,11 +65,10 @@ export default function CheckEmail() {
                 fontWeight: "700",
               }}
             >
-              Revisa tu correo
+              {t.auth.checkEmail.title}
             </h1>
           </div>
 
-          {/* Descripción */}
           <p
             style={{
               color: "#C7633F",
@@ -78,11 +78,9 @@ export default function CheckEmail() {
               marginBottom: "50px",
             }}
           >
-            Hemos enviado un enlace de recuperación a tu correo electrónico.
-            Sigue las instrucciones para restablecer tu contraseña.
+            {t.auth.checkEmail.description}
           </p>
 
-          {/* Reenviar */}
           <div
             style={{
               display: "flex",
@@ -110,11 +108,10 @@ export default function CheckEmail() {
               }}
             >
               <FaRedo size={20} />
-              Reenviar enlace
+              {t.auth.checkEmail.resend}
             </button>
           </div>
 
-          {/* Cambiar correo */}
           <div
             style={{
               display: "flex",
@@ -141,11 +138,10 @@ export default function CheckEmail() {
               }}
             >
               <FaEnvelope size={20} />
-              Cambiar correo
+              {t.auth.checkEmail.changeEmail}
             </button>
           </div>
 
-          {/* Nota */}
           <div
             style={{
               textAlign: "center",
@@ -156,8 +152,9 @@ export default function CheckEmail() {
               lineHeight: "1.4",
             }}
           >
-            Recuerda revisar tu bandeja de spam
-            <br />o correo no deseado.
+            {t.auth.checkEmail.spamNote}
+            <br />
+            {t.auth.checkEmail.spamNoteLine2}
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ import UpdatePassword from "./pages/UpdatePassword";
 import CreateProfileName from "./pages/CreateProfileName";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
+import Zones from "./pages/Zones";
 import VendorDetail from "./pages/VendorDetail";
 import Favorites from "./pages/Favorites";
 import Menu from "./pages/Menu";
@@ -50,6 +51,7 @@ export default function App() {
 
             <Route path="/home" element={<Home />} />
             <Route path="/map" element={<Map />} />
+            <Route path="/zones" element={<Zones />} />
             <Route path="/vendor/:id" element={<VendorDetail />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/menu" element={<Menu />} />
