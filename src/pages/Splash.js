@@ -12,7 +12,9 @@ export default function Splash() {
   return (
     <MobileContainer background="#0F8A73">
       <div className="splash-screen">
-        <img src={logoAlameda} alt="Galería Alameda" />
+        <div className="splash-screen__brand">
+          <img src={logoAlameda} alt="Galería Alameda" />
+        </div>
 
         <button
           type="button"

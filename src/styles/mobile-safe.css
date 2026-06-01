@@ -149,8 +149,8 @@ textarea {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: clamp(8px, 4dvh, 48px);
+  justify-content: flex-start;
+  padding-top: clamp(132px, 36dvh, 300px);
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
@@ -368,11 +368,21 @@ textarea {
   box-sizing: border-box;
 }
 
+.splash-screen__brand {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  padding: 8px 0;
+}
+
 .splash-screen img {
-  width: min(66%, 280px);
-  max-height: min(55dvh, 55vh);
+  width: min(88%, 400px);
+  max-height: min(70dvh, 70vh);
+  height: auto;
   object-fit: contain;
-  flex-shrink: 1;
 }
 
 .splash-screen__cta {
@@ -561,8 +571,7 @@ textarea {
   }
 
   .onboarding-screen__content {
-    padding-top: 0;
-    justify-content: flex-start;
+    padding-top: clamp(108px, 32dvh, 220px);
   }
 
   .onboarding-screen__footer {
@@ -575,7 +584,8 @@ textarea {
   }
 
   .splash-screen img {
-    max-height: min(44dvh, 44vh);
+    width: min(90%, 360px);
+    max-height: min(62dvh, 62vh);
   }
 
   .vendor-hero {
