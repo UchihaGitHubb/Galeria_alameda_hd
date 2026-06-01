@@ -1,0 +1,16 @@
+{
+  "short_name": "Galería Alameda",
+  "name": "Galería Alameda",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0F8A73",
+  "background_color": "#F1ECE3",
+  "orientation": "portrait"
+}

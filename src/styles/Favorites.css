@@ -1,10 +1,18 @@
 .favorites-page {
   height: 100%;
-  overflow-y: auto;
-
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: #f1ece3;
+}
 
-  padding-bottom: 90px;
+.favorites-page__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .favorites-header {
@@ -21,7 +29,7 @@
   color: #d9774a;
 
   font-family: "Quicksand";
-  font-size: 55px;
+  font-size: clamp(32px, 9vw, 55px);
   font-weight: 700;
   line-height: 1;
 }

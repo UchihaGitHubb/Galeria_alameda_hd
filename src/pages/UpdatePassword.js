@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
-import MobileContainer from "../components/MobileContainer";
+import AuthScreenShell from "../components/AuthScreenShell";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function PasswordUpdated() {
@@ -8,31 +8,14 @@ export default function PasswordUpdated() {
   const { t } = useLanguage();
 
   return (
-    <MobileContainer background="#C7633F">
+    <AuthScreenShell>
       <div
         style={{
-          height: "100vh",
-          position: "relative",
-          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "65%",
-            background: "#F1ECE3",
-            borderTopLeftRadius: "48px",
-            borderTopRightRadius: "48px",
-            padding: "48px 32px",
-            boxSizing: "border-box",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
           {/* Check */}
           <div
             style={{
@@ -103,8 +86,7 @@ export default function PasswordUpdated() {
           >
             {t.auth.passwordUpdated.submit}
           </button>
-        </div>
       </div>
-    </MobileContainer>
+    </AuthScreenShell>
   );
 }

@@ -1,0 +1,606 @@
+/* ============================================================
+   Variables móviles (iOS + Android)
+   ============================================================ */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --bottom-nav-bar: 60px;
+  --bottom-nav-total: calc(var(--bottom-nav-bar) + var(--safe-bottom));
+  --content-bottom-pad: calc(var(--bottom-nav-total) + 16px);
+  --touch-min: 44px;
+  --page-pad-x: clamp(16px, 4.5vw, 24px);
+}
+
+/* ============================================================
+   Base táctil y scroll (ambas plataformas)
+   ============================================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+button,
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Evita zoom al enfocar inputs en iOS (mín. 16px) */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* ============================================================
+   Layout de página con barra inferior fija
+   ============================================================ */
+.app-page {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.app-page__body {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen-fill {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ============================================================
+   Barra de navegación inferior
+   ============================================================ */
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  flex-shrink: 0;
+  height: var(--bottom-nav-total);
+  padding-bottom: var(--safe-bottom);
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(217, 119, 74, 0.15);
+}
+
+.bottom-nav--dark {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.bottom-nav__items {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: var(--bottom-nav-bar);
+}
+
+.bottom-nav__item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  padding: 4px 6px;
+  border: none;
+  background: transparent;
+}
+
+.bottom-nav__item img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.bottom-nav__item span {
+  font-family: "Quicksand", sans-serif;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.bottom-nav__item--active span {
+  font-weight: 700;
+}
+
+/* ============================================================
+   Onboarding
+   ============================================================ */
+.onboarding-screen {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--safe-top) + 16px) var(--page-pad-x)
+    calc(var(--safe-bottom) + 20px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.onboarding-screen__content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(8px, 4dvh, 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.onboarding-screen__content h1 {
+  font-family: "DistressedSherlock", serif;
+  font-size: clamp(32px, 9.5vw, 58px);
+  line-height: 0.95;
+  font-weight: normal;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.onboarding-screen__content p {
+  margin-top: clamp(12px, 3dvh, 28px);
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(15px, 4.2vw, 18px);
+  line-height: 1.4;
+  font-weight: 500;
+  max-width: 320px;
+  white-space: pre-line;
+}
+
+.onboarding-screen__footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  gap: 12px;
+}
+
+.onboarding-screen__next {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid currentColor;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 4px 4px;
+  min-height: var(--touch-min);
+}
+
+/* ============================================================
+   Auth (login, registro…)
+   ============================================================ */
+.auth-screen {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.auth-screen__panel {
+  flex: 0 1 auto;
+  max-height: min(78%, calc(100% - var(--safe-top) - 72px));
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: #f1ece3;
+  border-top-left-radius: clamp(32px, 8vw, 48px);
+  border-top-right-radius: clamp(32px, 8vw, 48px);
+  padding: clamp(24px, 5dvh, 48px) var(--page-pad-x)
+    calc(clamp(20px, 4dvh, 32px) + var(--safe-bottom));
+  box-sizing: border-box;
+}
+
+.auth-screen__panel h1 {
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(24px, 6.5vw, 32px);
+  font-weight: 700;
+  margin: 0 0 clamp(24px, 5dvh, 40px);
+  line-height: 1.15;
+}
+
+.auth-screen__panel p {
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.35;
+}
+
+.auth-screen__field {
+  background: #e0ae99;
+  border-radius: 40px;
+  min-height: var(--touch-min);
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.auth-screen__field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #f7d9cc;
+  min-width: 0;
+}
+
+.auth-screen__field input::placeholder {
+  color: #f7d9cc;
+  opacity: 1;
+}
+
+.auth-screen__btn-primary {
+  width: min(100%, 280px);
+  min-height: var(--touch-min);
+  height: auto;
+  padding: 14px 24px;
+  border-radius: 40px;
+  border: none;
+  background: #c7633f;
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-screen__btn-back {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: 50%;
+  border: none;
+  background: #c7633f;
+  color: #f1ece3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.auth-screen__link {
+  border: none;
+  background: transparent;
+  color: #c7633f;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 4px;
+  min-height: var(--touch-min);
+}
+
+/* Sobrescribe estilos inline en formularios auth */
+.auth-screen__panel h1 {
+  font-size: clamp(24px, 6.5vw, 32px) !important;
+  margin-bottom: clamp(20px, 4dvh, 40px) !important;
+}
+
+.auth-screen__panel p {
+  font-size: clamp(15px, 4vw, 18px) !important;
+}
+
+.auth-screen__panel div:has(> input) {
+  min-height: var(--touch-min) !important;
+  height: auto !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.auth-screen__panel input {
+  font-size: 16px !important;
+}
+
+.auth-screen__panel button {
+  min-height: var(--touch-min) !important;
+}
+
+.auth-screen__panel button[style*="border-radius: 50%"],
+.auth-screen__panel button[style*="border-radius:50%"] {
+  width: var(--touch-min) !important;
+  height: var(--touch-min) !important;
+  min-height: var(--touch-min) !important;
+  min-width: var(--touch-min) !important;
+  padding: 0 !important;
+}
+
+.auth-screen__panel button[style*="border-radius: 40px"],
+.auth-screen__panel button[style*="border-radius:40px"] {
+  height: auto !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  width: min(100%, 280px) !important;
+  max-width: 100%;
+}
+
+/* ============================================================
+   Splash
+   ============================================================ */
+.splash-screen {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: calc(var(--safe-top) + 24px);
+  padding-bottom: calc(var(--safe-bottom) + 28px);
+  padding-left: var(--page-pad-x);
+  padding-right: var(--page-pad-x);
+  box-sizing: border-box;
+}
+
+.splash-screen img {
+  width: min(66%, 280px);
+  max-height: min(55dvh, 55vh);
+  object-fit: contain;
+  flex-shrink: 1;
+}
+
+.splash-screen__cta {
+  width: min(100%, 200px);
+  min-height: var(--touch-min);
+  height: auto;
+  padding: 16px 24px;
+  border-radius: 40px;
+  border: none;
+  background: #e8cb42;
+  color: #0f8a73;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Home
+   ============================================================ */
+.home-header {
+  flex-shrink: 0;
+  padding: calc(var(--safe-top) + 8px) var(--page-pad-x) 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  gap: 8px;
+}
+
+.home-header__logo {
+  height: clamp(40px, 11vw, 48px);
+  width: auto;
+  max-width: min(160px, 42vw);
+  object-fit: contain;
+}
+
+.home-header__icon-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.home-scroll-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  padding: 16px var(--page-pad-x) var(--content-bottom-pad);
+  -webkit-overflow-scrolling: touch;
+}
+
+.home-scroll-content h1 {
+  font-size: clamp(36px, 11vw, 58px);
+}
+
+.home-scroll-content h2 {
+  font-size: clamp(26px, 7vw, 32px);
+}
+
+.home-scroll-content .home-desc {
+  font-size: clamp(16px, 4.2vw, 18px);
+}
+
+.home-scroll-content .home-cta {
+  width: 100%;
+  max-width: 320px;
+  min-height: var(--touch-min);
+  margin: clamp(20px, 4dvh, 32px) auto 0;
+  padding: 14px 20px;
+  font-size: clamp(18px, 4.5vw, 22px);
+}
+
+.home-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 2.5vw, 18px);
+}
+
+.home-category-btn {
+  min-height: 0;
+  aspect-ratio: 1;
+  border-radius: clamp(20px, 5vw, 28px);
+  padding: clamp(8px, 2vw, 10px);
+}
+
+.home-category-btn span {
+  font-size: clamp(11px, 3vw, 14px);
+}
+
+/* ============================================================
+   Tipografía responsive en pantallas existentes
+   ============================================================ */
+.favorites-title {
+  font-size: clamp(32px, 9vw, 55px) !important;
+}
+
+.favorites-header {
+  padding-top: calc(var(--safe-top) + 16px);
+}
+
+.vendor-detail-content h1 {
+  font-size: clamp(32px, 9vw, 52px) !important;
+}
+
+.vendor-hero {
+  height: clamp(180px, 32dvh, 320px) !important;
+}
+
+.help-header {
+  padding-top: calc(var(--safe-top) + 20px);
+}
+
+.help-header h1 {
+  font-size: clamp(20px, 5.5vw, 26px);
+}
+
+.vendor-actions-header {
+  padding-top: calc(var(--safe-top) + 20px);
+}
+
+.vendor-actions-header h1 {
+  font-size: clamp(22px, 5.5vw, 28px);
+}
+
+.settings-page {
+  padding-top: calc(var(--safe-top) + 24px);
+}
+
+.settings-header {
+  margin-bottom: clamp(32px, 8dvh, 90px);
+}
+
+.routes-page__header,
+.cat-search__header,
+.zones-header {
+  padding-top: calc(var(--safe-top) + 12px);
+}
+
+.routes-page__header h1,
+.cat-search__header h1,
+.zones-header-title {
+  font-size: clamp(20px, 5.5vw, 24px);
+}
+
+.routes-page__map-frame {
+  max-height: min(42dvh, 42vh, 250px);
+  height: min(42dvh, 42vh, 250px);
+}
+
+.zones-map-card__frame {
+  max-height: min(44dvh, 44vh, 260px);
+  height: min(44dvh, 44vh, 260px);
+  min-height: min(180px, 36dvh);
+}
+
+.search-results h2 {
+  font-size: clamp(22px, 6vw, 28px);
+}
+
+.filter-sheet {
+  padding-bottom: calc(24px + var(--safe-bottom)) !important;
+}
+
+/* Mapa: inputs legibles sin zoom en iOS */
+.search-input,
+.search-bar-wrap input {
+  font-size: 16px !important;
+}
+
+/* ============================================================
+   Pantallas bajas (iPhone SE, Android compactos)
+   ============================================================ */
+@media (max-height: 700px) {
+  .onboarding-screen {
+    padding-top: calc(var(--safe-top) + 8px);
+    padding-bottom: calc(var(--safe-bottom) + 12px);
+  }
+
+  .onboarding-screen__content {
+    padding-top: 0;
+    justify-content: flex-start;
+  }
+
+  .onboarding-screen__footer {
+    padding-top: 10px;
+  }
+
+  .auth-screen__panel {
+    max-height: min(88%, calc(100% - var(--safe-top) - 40px));
+    padding-top: 20px;
+  }
+
+  .splash-screen img {
+    max-height: min(44dvh, 44vh);
+  }
+
+  .vendor-hero {
+    height: clamp(150px, 28dvh, 220px) !important;
+  }
+}
+
+@media (max-height: 600px) {
+  .onboarding-screen__content h1 {
+    font-size: 30px;
+  }
+
+  .onboarding-screen__content p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+/* Pantallas muy estrechas */
+@media (max-width: 360px) {
+  :root {
+    --page-pad-x: 14px;
+  }
+
+  .home-category-grid {
+    gap: 8px;
+  }
+}

@@ -74,7 +74,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 20px 100px;
+  padding: 0 20px var(--content-bottom-pad);
   -webkit-overflow-scrolling: touch;
 }
 

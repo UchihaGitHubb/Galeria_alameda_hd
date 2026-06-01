@@ -29,31 +29,12 @@ export default function BottomNav() {
       : "#F1ECE3";
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: "60px",
-        background: navBackground,
-        borderTop: darkMode
-          ? "1px solid rgba(255,255,255,0.08)"
-          : "1px solid rgba(217,119,74,0.15)",
-        zIndex: 9999,
-        display: "flex",
-        alignItems: "center",
-        flexShrink: 0,
-      }}
+    <nav
+      className={`bottom-nav ${darkMode ? "bottom-nav--dark" : ""}`}
+      style={{ background: navBackground }}
+      aria-label={t.nav.menu}
     >
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+      <div className="bottom-nav__items">
         <NavItem
           active={isActive("/home")}
           icon={homeIcon}
@@ -89,47 +70,31 @@ export default function BottomNav() {
           onClick={() => navigate("/menu")}
         />
       </div>
-    </div>
+    </nav>
   );
 }
 
 function NavItem({ icon, label, active, onClick }) {
+  const color = active ? "#D9774A" : "#A67C52";
+
   return (
-    <div
+    <button
+      type="button"
+      className={`bottom-nav__item ${active ? "bottom-nav__item--active" : ""}`}
       onClick={onClick}
-      style={{
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "2px",
-      }}
+      aria-label={label}
+      aria-current={active ? "page" : undefined}
     >
       <img
         src={icon}
-        alt={label}
+        alt=""
         style={{
-          width: "20px",
-          height: "20px",
-          objectFit: "contain",
-
           filter: active
             ? "brightness(0) saturate(100%) invert(56%) sepia(56%) saturate(1285%) hue-rotate(335deg) brightness(80%) contrast(92%)"
             : "brightness(0) saturate(100%) invert(52%) sepia(16%) saturate(1109%) hue-rotate(349deg) brightness(93%) contrast(88%)",
         }}
       />
-
-      <span
-        style={{
-          fontFamily: "Quicksand",
-          fontSize: "10px",
-          lineHeight: 1,
-          color: active ? "#D9774A" : "#A67C52",
-          fontWeight: active ? 700 : 500,
-        }}
-      >
-        {label}
-      </span>
-    </div>
+      <span style={{ color }}>{label}</span>
+    </button>
   );
 }

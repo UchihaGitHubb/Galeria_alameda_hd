@@ -19,7 +19,8 @@ export default function Menu() {
 
   return (
     <MobileContainer background={darkMode ? "#1B1B1B" : "#F1ECE3"}>
-      <div className={`menu-page ${darkMode ? "menu-dark" : ""}`}>
+      <div className={`menu-page app-page ${darkMode ? "menu-dark" : ""}`}>
+        <div className="menu-page__body">
         <div className="profile-section">
           <div className="profile-avatar">
             <img src={profileAvatar} alt="" />
@@ -68,6 +69,7 @@ export default function Menu() {
             label={t.menu.logout}
             onClick={() => navigate("/login")}
           />
+        </div>
         </div>
 
         <BottomNav />

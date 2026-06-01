@@ -21,6 +21,8 @@ export default function Home() {
 
   const { darkMode } = useTheme();
   const { t } = useLanguage();
+  const accent = darkMode ? "#FFFFFF" : "#D9774A";
+  const textMuted = darkMode ? "#D8D8D8" : "#A67A4F";
 
   const categories = [
     { icon: rutasIcon, label: t.homePage.routes, path: "/routes" },
@@ -37,85 +39,41 @@ export default function Home() {
 
   return (
     <MobileContainer background={darkMode ? "#1B1B1B" : "#F1ECE3"}>
-      <div
-        style={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-        }}
-      >
-        {/* HEADER */}
-
-        <div
-          style={{
-            height: "80px",
-            padding: "0 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexShrink: 0,
-          }}
-        >
+      <div className="screen-fill">
+        <div className="home-header">
           <button
             type="button"
+            className="home-header__icon-btn"
             onClick={() => navigate("/menu")}
-            style={{
-              background: "transparent",
-              border: "none",
-              padding: 0,
-              color: darkMode ? "#FFFFFF" : "#D9774A",
-              cursor: "pointer",
-            }}
+            style={{ color: accent }}
             aria-label={t.nav.menu}
           >
-            <Menu size={30} />
+            <Menu size={28} />
           </button>
 
           <img
             src={logoAlameda}
             alt="Galería Alameda"
-            style={{
-              height: "220px",
-              width: "auto",
-              maxWidth: "220px",
-              objectFit: "contain",
-            }}
+            className="home-header__logo"
           />
 
           <button
             type="button"
+            className="home-header__icon-btn"
             onClick={() => navigate("/help", { state: { from: "/home" } })}
-            style={{
-              background: "transparent",
-              border: "none",
-              padding: 0,
-              color: darkMode ? "#FFFFFF" : "#D9774A",
-              cursor: "pointer",
-            }}
+            style={{ color: accent }}
             aria-label={t.settings.help}
           >
-            <CircleHelp size={30} />
+            <CircleHelp size={28} />
           </button>
         </div>
 
-        {/* CONTENIDO */}
-
-        <div
-          style={{
-            flex: 1,
-            overflowY: "auto",
-            overflowX: "hidden",
-            padding: "24px 20px 140px",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
+        <div className="home-scroll-content">
           <h1
             style={{
               margin: 0,
-              color: darkMode ? "#FFFFFF" : "#D9774A",
+              color: accent,
               fontFamily: "DistressedSherlock",
-              fontSize: "58px",
               fontWeight: "normal",
               lineHeight: 1,
             }}
@@ -124,11 +82,11 @@ export default function Home() {
           </h1>
 
           <p
+            className="home-desc"
             style={{
               marginTop: "24px",
-              color: darkMode ? "#D8D8D8" : "#A67A4F",
+              color: textMuted,
               fontFamily: "Quicksand",
-              fontSize: "18px",
               fontWeight: "500",
               lineHeight: "1.6",
             }}
@@ -137,19 +95,16 @@ export default function Home() {
           </p>
 
           <button
+            type="button"
+            className="home-cta"
             onClick={() => navigate("/map")}
             style={{
-              width: "100%",
-              maxWidth: "320px",
-              height: "60px",
               display: "block",
-              margin: "32px auto 0",
               border: "none",
               borderRadius: "40px",
               background: "#DF7A4D",
               color: "#FFF6EB",
               fontFamily: "Quicksand",
-              fontSize: "22px",
               fontWeight: "700",
               cursor: "pointer",
             }}
@@ -160,18 +115,17 @@ export default function Home() {
           <div
             style={{
               height: "1px",
-              background: darkMode ? "#FFFFFF" : "#D9774A",
+              background: accent,
               opacity: 0.2,
-              margin: "40px 0 30px",
+              margin: "clamp(24px, 5dvh, 40px) 0 clamp(20px, 4dvh, 30px)",
             }}
           />
 
           <h2
             style={{
-              margin: "0 0 30px",
-              color: darkMode ? "#FFFFFF" : "#D9774A",
+              margin: "0 0 clamp(20px, 4dvh, 30px)",
+              color: accent,
               fontFamily: "DistressedSherlock",
-              fontSize: "32px",
               fontWeight: "normal",
               textAlign: "center",
             }}
@@ -179,46 +133,37 @@ export default function Home() {
             {t.homePage.categories}
           </h2>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "18px",
-            }}
-          >
+          <div className="home-category-grid">
             {categories.map((item) => (
               <button
                 key={item.label}
                 type="button"
+                className="home-category-btn"
                 onClick={() => item.path && navigate(item.path)}
                 style={{
                   border: "none",
                   background: darkMode ? "#2A2A2A" : "#DF7A4D",
-                  borderRadius: "28px",
-                  aspectRatio: "1",
                   cursor: "pointer",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "10px",
                 }}
               >
                 <img
                   src={item.icon}
                   alt={item.label}
                   style={{
-                    width: "42px",
-                    height: "42px",
+                    width: "clamp(32px, 9vw, 42px)",
+                    height: "clamp(32px, 9vw, 42px)",
                     objectFit: "contain",
-                    marginBottom: "10px",
+                    marginBottom: "8px",
                   }}
                 />
 
                 <span
                   style={{
                     fontFamily: "Quicksand",
-                    fontSize: item.label.length > 12 ? "12px" : "14px",
                     fontWeight: "600",
                     textAlign: "center",
                     lineHeight: "1.2",

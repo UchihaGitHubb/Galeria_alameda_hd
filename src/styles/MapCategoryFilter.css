@@ -2,7 +2,7 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.28);
-  z-index: 800;
+  z-index: 10000;
   backdrop-filter: blur(3px);
 }
 
@@ -11,33 +11,49 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  max-height: min(90dvh, calc(100% - env(safe-area-inset-top, 0px) - 8px));
   background: var(--bg-main, #f1ece3);
   border-radius: 32px 32px 0 0;
-  padding: 28px 22px 32px;
-  z-index: 900;
   box-sizing: border-box;
+  overflow: hidden;
   animation: sheetUp 0.25s ease;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .map-cat-filter-sheet h2 {
-  margin: 0 0 22px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 20px 20px 14px;
   text-align: center;
   font-family: "Quicksand", sans-serif;
-  font-size: 22px;
+  font-size: clamp(18px, 4.8vw, 22px);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--text-main, #d9774a);
+}
+
+.map-cat-filter-sheet__body {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px 12px;
 }
 
 .map-cat-filter-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .map-cat-filter-tile {
-  aspect-ratio: 1;
+  min-height: 100px;
   border: none;
   border-radius: 22px;
   background: #df7a4d;
@@ -45,13 +61,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px;
+  gap: 8px;
+  padding: 12px 8px;
   cursor: pointer;
   color: #ffffff;
   font-family: "Quicksand", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .map-cat-filter-tile.active {
@@ -59,20 +73,32 @@
 }
 
 .map-cat-filter-tile__icon {
-  width: 42px;
-  height: 42px;
+  width: clamp(32px, 9vw, 42px);
+  height: clamp(32px, 9vw, 42px);
   object-fit: contain;
+  flex-shrink: 0;
+}
+
+.map-cat-filter-tile span {
+  font-size: clamp(11px, 2.9vw, 14px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
 
 .map-cat-filter-sub {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .map-cat-filter-sub__label {
   margin: 0 0 10px;
   font-family: "Quicksand", sans-serif;
-  font-size: 14px;
+  font-size: clamp(13px, 3.5vw, 14px);
   font-weight: 700;
+  line-height: 1.25;
   color: var(--text-main, #d9774a);
 }
 
@@ -83,8 +109,10 @@
 }
 
 .map-cat-filter-chip {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border: 1px solid rgba(217, 119, 74, 0.35);
   border-radius: 50%;
   background: #fff8f0;
@@ -103,19 +131,22 @@
 
 .map-cat-filter-sub--row {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .map-cat-filter-owner {
   flex: 1;
-  height: 48px;
+  min-height: 48px;
+  height: auto;
+  padding: 10px 12px;
   border: 1px solid rgba(217, 119, 74, 0.35);
   border-radius: 24px;
   background: #fff8f0;
   color: var(--text-main, #d9774a);
   font-family: "Quicksand", sans-serif;
-  font-size: 15px;
+  font-size: clamp(14px, 3.8vw, 15px);
   font-weight: 700;
+  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -125,27 +156,34 @@
 }
 
 .map-cat-filter-actions {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--bg-main, #f1ece3);
+  border-top: 1px solid rgba(217, 119, 74, 0.12);
 }
 
 .map-cat-filter-apply {
   width: 100%;
-  height: 54px;
+  min-height: 48px;
+  height: auto;
+  padding: 12px 20px;
   border: none;
   border-radius: 40px;
   background: #d9774a;
   color: #ffffff;
   font-family: "Quicksand", sans-serif;
-  font-size: 18px;
+  font-size: clamp(16px, 4.2vw, 18px);
   font-weight: 700;
   cursor: pointer;
 }
 
 .map-cat-filter-clear {
   width: 100%;
-  height: 44px;
+  min-height: 44px;
+  padding: 10px;
   border: none;
   border-radius: 40px;
   background: transparent;
@@ -156,8 +194,13 @@
   cursor: pointer;
 }
 
-.map-page--dark .map-cat-filter-sheet {
+.map-page--dark .map-cat-filter-sheet,
+.map-page--dark .map-cat-filter-actions {
   background: #1b1b1b;
+}
+
+.map-page--dark .map-cat-filter-actions {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .map-page--dark .map-cat-filter-tile {

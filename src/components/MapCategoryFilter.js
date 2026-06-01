@@ -44,6 +44,7 @@ export default function MapCategoryFilter({
       <div className="map-cat-filter-sheet" role="dialog" aria-modal="true">
         <h2>{t.map.filterSelectTitle}</h2>
 
+        <div className="map-cat-filter-sheet__body">
         <div className="map-cat-filter-grid">
           {CATEGORIES.map((cat) => (
             <button
@@ -130,6 +131,7 @@ export default function MapCategoryFilter({
             </button>
           </div>
         ) : null}
+        </div>
 
         <div className="map-cat-filter-actions">
           <button type="button" className="map-cat-filter-apply" onClick={onApply}>

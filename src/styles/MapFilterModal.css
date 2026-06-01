@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 900;
+  z-index: 10000;
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -22,9 +22,13 @@
   right: 0;
   background: var(--bg-main);
   border-radius: 32px 32px 0 0;
-  z-index: 950;
-  max-height: 85vh;
-  overflow-y: auto;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: min(85dvh, calc(100% - var(--safe-top) - 24px));
+  padding-bottom: 0;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   animation: slideUp 0.3s ease-out;
 }
@@ -79,6 +83,11 @@
 }
 
 .map-filter-modal-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 0 28px 24px;
 }
 
@@ -159,10 +168,9 @@
 .map-filter-modal-actions {
   display: flex;
   gap: 14px;
-  padding: 24px 28px;
+  flex-shrink: 0;
+  padding: 16px 28px calc(16px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(217, 119, 74, 0.1);
-  position: sticky;
-  bottom: 0;
   background: var(--bg-main);
 }
 

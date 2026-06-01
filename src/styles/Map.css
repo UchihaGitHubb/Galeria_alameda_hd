@@ -150,7 +150,7 @@
   position: absolute;
 
   right: 12px;
-  bottom: 90px;
+  bottom: var(--content-bottom-pad);
 
   display: flex;
   flex-direction: column;
@@ -163,7 +163,13 @@
 }
 
 .map-controls.card-open {
-  bottom: 250px;
+  bottom: min(250px, calc(100% - var(--safe-top) - 120px));
+}
+
+@media (max-height: 700px) {
+  .map-controls.card-open {
+    bottom: calc(var(--content-bottom-pad) + 140px);
+  }
 }
 
 .control-circle {
@@ -231,7 +237,7 @@
   left: 12px;
   right: 12px;
 
-  bottom: 70px;
+  bottom: calc(var(--bottom-nav-total) + 8px);
 
   z-index: 400;
 
@@ -264,7 +270,8 @@
   right: 0;
   bottom: 0;
 
-  max-height: 80vh;
+  max-height: min(80dvh, calc(100% - var(--safe-top) - 48px));
+  padding-bottom: calc(24px + var(--safe-bottom));
 
   background: var(--bg-main);
 

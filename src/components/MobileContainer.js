@@ -21,6 +21,9 @@ export default function MobileContainer({ children, background }) {
           overflow: "hidden",
           background: background || (darkMode ? "#1B1B1B" : "#F1ECE3"),
           position: "relative",
+          paddingLeft: "env(safe-area-inset-left, 0px)",
+          paddingRight: "env(safe-area-inset-right, 0px)",
+          boxSizing: "border-box",
         }}
       >
         {children}

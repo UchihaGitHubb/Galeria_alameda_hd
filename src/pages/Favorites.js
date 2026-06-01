@@ -33,11 +33,12 @@ export default function Favorites() {
   return (
     <MobileContainer>
       <div
-        className="favorites-page"
+        className="favorites-page app-page"
         style={{
           background: darkMode ? "#1B1B1B" : "#F1ECE3",
         }}
       >
+        <div className="favorites-page__scroll">
         <div className="favorites-header">
           <h1
             className="favorites-title"
@@ -90,6 +91,7 @@ export default function Favorites() {
             ))}
           </div>
         )}
+        </div>
 
         <BottomNav />
       </div>

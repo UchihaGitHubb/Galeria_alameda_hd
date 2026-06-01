@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaLock } from "react-icons/fa";
-import MobileContainer from "../components/MobileContainer";
+import AuthScreenShell from "../components/AuthScreenShell";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function NewPassword() {
@@ -8,28 +8,7 @@ export default function NewPassword() {
   const { t } = useLanguage();
 
   return (
-    <MobileContainer background="#C7633F">
-      <div
-        style={{
-          height: "100vh",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "65%",
-            background: "#F1ECE3",
-            borderTopLeftRadius: "48px",
-            borderTopRightRadius: "48px",
-            padding: "48px 32px",
-            boxSizing: "border-box",
-          }}
-        >
+    <AuthScreenShell>
           {/* Header */}
           <div
             style={{
@@ -172,8 +151,6 @@ export default function NewPassword() {
               {t.auth.newPassword.submit}
             </button>
           </div>
-        </div>
-      </div>
-    </MobileContainer>
+    </AuthScreenShell>
   );
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import MobileContainer from "../components/MobileContainer";
+import AuthScreenShell from "../components/AuthScreenShell";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Login() {
@@ -8,28 +8,7 @@ export default function Login() {
   const { t } = useLanguage();
 
   return (
-    <MobileContainer background="#C7633F">
-      <div
-        style={{
-          height: "100vh",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "65%",
-            background: "#F1ECE3",
-            borderTopLeftRadius: "48px",
-            borderTopRightRadius: "48px",
-            padding: "48px 32px",
-            boxSizing: "border-box",
-          }}
-        >
+    <AuthScreenShell>
           <h1
             style={{
               fontFamily: "Quicksand",
@@ -178,8 +157,6 @@ export default function Login() {
               {t.auth.login.register}
             </span>
           </div>
-        </div>
-      </div>
-    </MobileContainer>
+    </AuthScreenShell>
   );
 }
