@@ -1,0 +1,465 @@
+/* ==========================================
+   MAP PAGE
+========================================== */
+
+.map-page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ==========================================
+     SEARCH BAR
+  ========================================== */
+
+.search-wrapper {
+  position: absolute;
+
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  left: 12px;
+  right: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 300;
+}
+
+.search-bar {
+  flex: 1;
+
+  height: 58px;
+
+  background: var(--card-secondary);
+
+  border-radius: 32px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+
+  border: 1px solid rgba(188, 177, 163, 0.22);
+
+  backdrop-filter: blur(2px);
+
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    0 6px 10px rgba(0, 0, 0, 0.08), 0 14px 28px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.25s ease;
+}
+
+.search-bar:focus-within {
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    0 8px 14px rgba(0, 0, 0, 0.1), 0 18px 32px rgba(0, 0, 0, 0.12);
+}
+
+.search-input {
+  flex: 1;
+
+  margin-left: 12px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.2px;
+
+  color: var(--text-main);
+}
+
+.search-input::placeholder {
+  color: var(--text-main);
+  opacity: 1;
+
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.2px;
+}
+
+.filter-btn {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  border: 1px solid rgba(188, 177, 163, 0.22);
+
+  background: var(--card-secondary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(2px);
+
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    0 6px 10px rgba(0, 0, 0, 0.08), 0 14px 28px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  transform: scale(1.02);
+}
+
+.filter-btn:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================
+     MAP
+  ========================================== */
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.map-image {
+  width: 100%;
+  display: block;
+  opacity: 0.45;
+  user-select: none;
+  pointer-events: none;
+}
+
+.marker-wrapper {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+}
+
+/* ==========================================
+     CONTROLES MAPA
+  ========================================== */
+
+.map-controls {
+  position: absolute;
+
+  right: 12px;
+  bottom: 90px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 500;
+
+  transition: all 0.3s ease;
+}
+
+.map-controls.card-open {
+  bottom: 250px;
+}
+
+.control-circle {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--card-secondary);
+  color: var(--bg-main);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.zoom-group {
+  width: 35px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: var(--text-main);
+
+  margin-left: 4px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.zoom-group button {
+  width: 100%;
+  height: 45px;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.zoom-group button:active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================
+     VENDOR CARD
+  ========================================== */
+
+.vendor-card-wrapper {
+  position: absolute;
+
+  left: 12px;
+  right: 12px;
+
+  bottom: 70px;
+
+  z-index: 400;
+
+  animation: slideUp 0.25s ease;
+}
+
+/* ==========================================
+     FILTERS
+  ========================================== */
+
+/* ==========================================
+   FILTERS
+========================================== */
+
+.filter-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.28);
+
+  z-index: 800;
+
+  backdrop-filter: blur(3px);
+}
+
+.filter-sheet {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  max-height: 80vh;
+
+  background: var(--bg-main);
+
+  border-radius: 32px 32px 0 0;
+
+  padding: 24px;
+
+  z-index: 900;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  animation: sheetUp 0.25s ease;
+
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.filter-sheet h2 {
+  margin: 0 0 24px;
+
+  font-family: "DistressedSherlock";
+  font-size: 32px;
+  font-weight: normal;
+
+  color: var(--text-main);
+}
+
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-label {
+  margin-bottom: 12px;
+
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 700;
+
+  color: var(--text-main);
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+.filter-chip {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--card-secondary);
+  color: var(--text-main);
+
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition: all 0.2s ease;
+}
+
+.filter-chip.active {
+  background: var(--card-secondary);
+  color: var(--bg-main);
+}
+
+.filter-actions {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.clear-btn,
+.apply-btn {
+  flex: 1;
+
+  height: 50px;
+
+  border: none;
+  border-radius: 25px;
+
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.clear-btn {
+  background: var(--card-secondary);
+  color: var(--text-main);
+}
+
+.apply-btn {
+  background: var(--card-secondary);
+  color: var(--bg-main);
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+     ANIMATIONS
+  ========================================== */
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+.route-svg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 40;
+}
+
+.route-svg polyline {
+  stroke-dasharray: 5;
+  animation: routeMove 1s linear infinite;
+}
+
+@keyframes routeMove {
+  from {
+    stroke-dashoffset: 10;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.route-svg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 40;
+}
+
+.route-svg polyline:last-child {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+
+  animation: drawRoute 5.5s ease forwards;
+}
+
+@keyframes drawRoute {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

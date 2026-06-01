@@ -1,0 +1,112 @@
+.favorites-page {
+  height: 100%;
+  overflow-y: auto;
+
+  background: #f1ece3;
+
+  padding-bottom: 90px;
+}
+
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px 20px 10px;
+}
+
+.favorites-title {
+  margin: 0;
+
+  color: #d9774a;
+
+  font-family: "Quicksand";
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.favorites-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #fff7ef;
+
+  border: 2px solid #dfcdbb;
+
+  border-radius: 30px;
+
+  padding: 8px 14px;
+
+  color: #d9774a;
+
+  font-family: "Quicksand";
+  font-weight: 700;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 10px 16px 0;
+}
+
+.favorites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 80px 30px;
+
+  color: #d9774a;
+}
+
+.favorites-empty h2 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+
+  font-family: "Quicksand";
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.favorites-empty p {
+  margin: 0;
+
+  color: #9f876c;
+
+  font-family: "Quicksand";
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==================================
+   DARK MODE
+================================== */
+
+.favorites-dark {
+  background: #1b1b1b;
+}
+
+.favorites-dark .favorites-title {
+  color: #ffffff;
+}
+
+.favorites-dark .favorites-count {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.favorites-dark .favorites-empty {
+  color: #ffffff;
+}
+
+.favorites-dark .favorites-empty p {
+  color: #cfcfcf;
+}

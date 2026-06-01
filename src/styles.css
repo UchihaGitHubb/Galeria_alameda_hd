@@ -1,0 +1,79 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body.dark-theme {
+  background: #1b1b1b;
+  color: #ffffff;
+}
+
+body.dark-theme .settings-page {
+  background: #1b1b1b;
+}
+
+body.dark-theme .settings-row span,
+body.dark-theme .settings-link span,
+body.dark-theme h1 {
+  color: #ffffff;
+}
+
+body.dark-theme .settings-divider {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.vendor-dark {
+  background: #1b1b1b;
+}
+
+.vendor-dark .vendor-detail-content {
+  background: #1b1b1b;
+}
+
+.vendor-dark h1,
+.vendor-dark h2,
+.vendor-dark h3,
+.vendor-dark p,
+.vendor-dark span {
+  color: #ffffff;
+}
+
+.vendor-dark .hero-circle {
+  background: #2a2a2a;
+}
+
+.vendor-dark .vendor-avatar {
+  background: #2a2a2a;
+}
+
+.vendor-dark .section-divider {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.vendor-dark .product-circle {
+  background: #2a2a2a;
+
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.vendor-dark .map-link {
+  color: #d9774a;
+}
+
+.vendor-dark .local-chip {
+  background: #d9774a;
+}
+
+.vendor-dark .route-btn,
+.vendor-dark .action-buttons button {
+  background: #d9774a;
+}
+
+.vendor-dark .location-row span,
+.vendor-dark .schedule-row span {
+  color: #ffffff;
+}

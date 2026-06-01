@@ -1,0 +1,206 @@
+.settings-page {
+  height: 100%;
+  overflow-y: auto;
+
+  padding: 30px;
+  padding-bottom: 20px;
+
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  margin-bottom: 90px;
+}
+
+.back-button {
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #d9774a;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.settings-header h1 {
+  margin: 0;
+
+  color: #d9774a;
+
+  font-family: "Quicksand";
+  font-size: 30px;
+  font-weight: 500;
+}
+
+/* FILAS */
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 70px;
+}
+
+/* IMPORTANTE:
+     Solo afecta el texto principal de la fila
+     y NO los spans internos del select-pill
+  */
+.settings-row > span {
+  color: #d9774a;
+
+  font-family: "Quicksand";
+  font-size: 24px;
+}
+
+/* DIVIDER */
+
+.settings-divider {
+  height: 1px;
+
+  background: rgba(217, 119, 74, 0.35);
+
+  margin: 12px 0;
+}
+
+/* TOGGLE */
+
+.toggle {
+  width: 120px;
+  height: 60px;
+
+  border: none;
+  border-radius: 40px;
+
+  background: #e0d8cd;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.toggle.active {
+  background: #d9774a;
+}
+
+.toggle-circle {
+  position: absolute;
+
+  top: 6px;
+  left: 6px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #f1ece3;
+
+  transition: 0.25s;
+}
+
+.toggle.active .toggle-circle {
+  left: 66px;
+}
+
+/* SELECT */
+
+.select-pill {
+  width: 170px;
+  height: 58px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #d9774a;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  box-sizing: border-box;
+
+  font-family: "Quicksand";
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+/* TEXTO BLANCO DENTRO DEL PILL */
+
+.select-pill span {
+  color: white;
+  font-size: 20px;
+}
+
+.select-pill svg {
+  color: white;
+}
+
+/* LINKS */
+
+.settings-link {
+  width: 100%;
+
+  min-height: 82px;
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0;
+
+  color: #d9774a;
+
+  cursor: pointer;
+}
+
+.settings-link span {
+  font-family: "Quicksand";
+  font-size: 24px;
+}
+
+/* DARK MODE */
+
+body.dark-theme .settings-page {
+  background: #1b1b1b;
+}
+
+body.dark-theme .settings-header h1,
+body.dark-theme .settings-row > span,
+body.dark-theme .settings-link span {
+  color: #ffffff;
+}
+
+body.dark-theme .settings-divider {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-theme .settings-link {
+  color: #ffffff;
+}
+
+body.dark-theme .back-button {
+  background: #d9774a;
+}

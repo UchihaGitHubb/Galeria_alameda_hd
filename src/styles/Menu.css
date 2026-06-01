@@ -1,0 +1,154 @@
+.menu-page {
+  height: 100%;
+  overflow-y: auto;
+
+  padding: 28px 30px 90px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+     PERFIL
+  ========================= */
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 84px;
+  height: 84px;
+
+  border-radius: 50%;
+
+  background: #ac7d4f;
+
+  flex-shrink: 0;
+}
+
+.profile-info {
+  margin-left: 22px;
+}
+
+.profile-info h2 {
+  margin: 0;
+
+  color: var(--text-main);
+
+  font-family: "Quicksand";
+  font-size: 24px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.profile-link {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+  margin-top: 8px;
+
+  color: var(--text-main);
+
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+/* =========================
+     DIVIDER
+  ========================= */
+
+.menu-divider {
+  height: 1px;
+
+  background: rgba(217, 119, 74, 0.4);
+
+  margin: 34px 0;
+}
+
+/* =========================
+     ITEMS
+  ========================= */
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: var(--text-main);
+
+  margin-bottom: 44px;
+}
+
+.menu-item:last-child {
+  margin-bottom: 0;
+}
+
+.menu-item svg {
+  width: 28px;
+  height: 28px;
+
+  stroke-width: 2.2;
+}
+
+.menu-item span {
+  margin-left: 18px;
+
+  color: var(--text-main);
+
+  font-family: "Quicksand";
+  font-size: 20px;
+  font-weight: 1000;
+}
+
+/* ==================================
+   DARK MODE
+================================== */
+
+.menu-dark {
+  background: #1b1b1b;
+}
+
+.menu-dark .profile-avatar {
+  background: #333333;
+}
+
+.menu-dark .profile-info h2 {
+  color: #ffffff;
+}
+
+.menu-dark .profile-link {
+  color: #d8d8d8;
+}
+
+.menu-dark .menu-divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.menu-dark .menu-item {
+  color: #ffffff;
+}
+
+.menu-dark .menu-item span {
+  color: #ffffff;
+}
+
+.menu-dark .menu-item svg {
+  color: #ffffff;
+}
