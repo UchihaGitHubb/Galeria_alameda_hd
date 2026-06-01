@@ -84,6 +84,7 @@
       product: {
         title: "Producto",
         placeholder: "BUSCA EL PRODUCTO",
+        section: "{business}, Zona {zone}",
       },
       owner: {
         title: "Don/Doña",
@@ -94,7 +95,47 @@
       title: "Rutas",
       back: "Volver",
       mapAlt: "Mapa de rutas de la Galería Alameda",
-      cardsAlt: "Rutas temáticas de la galería",
+      hint: "Recorridos temáticos por la galería",
+      localsLabel: "Locales",
+      routes: {
+        1: {
+          name: "Colombia chiquita",
+          stops: [
+            { zone: "1", title: "Zona de frutas y verduras", locals: "#1-62" },
+            { zone: "2", title: "Saberes gastronómicos", locals: "#63-116" },
+          ],
+        },
+        2: {
+          name: "Camino de hierbas",
+          stops: [{ zone: "3", title: "Hierbas medicinales", locals: "#117-163" }],
+        },
+        3: {
+          name: "Cali, rincón del Pacífico",
+          stops: [
+            { zone: "4", title: "Carnes", locals: "#164-207" },
+            { zone: "5", title: "Mágico - Religioso", locals: "#208-235" },
+          ],
+        },
+        4: {
+          name: "Colores de sabores",
+          stops: [
+            { zone: "6", title: "Flores", locals: "#236-255" },
+            { zone: "7", title: "Artesanías", locals: "#256-275" },
+          ],
+        },
+        5: {
+          name: "La vuelta a la alameda",
+          stops: [
+            { zone: "8", title: "La Vuelta Alameda", locals: "#276-350" },
+          ],
+        },
+      },
+    },
+    mapFrame: {
+      zoomIn: "Acercar mapa",
+      zoomOut: "Alejar mapa",
+      reset: "Restablecer vista del mapa",
+      hint: "Pellizca o arrastra para explorar el mapa",
     },
     map: {
       searchPlaceholder: "BUSCA EN EL MERCADO",
@@ -116,6 +157,8 @@
 
       clear: "Limpiar",
       apply: "Aplicar",
+      centerMap: "Centrar mapa",
+      compass: "Brújula",
     },
 
     search: {
@@ -133,6 +176,7 @@
       title: "Zonas",
       back: "Volver",
       mapAlt: "Mapa de zonas de la Galería Alameda",
+      hint: "Toca una zona para verla en el mapa",
       items: {
         1: "Zona de frutas y verduras",
         2: "Saberes gastronómicos",
@@ -145,7 +189,81 @@
       },
     },
 
+    vendor: {
+      route: "Ruta",
+      zone: "Zona",
+      local: "Local",
+      products: "Productos",
+      markRoute: "Marcar ruta",
+      viewDetails: "Ver detalles",
+      description: "Descripción",
+      location: "Ubicación",
+      schedule: "Horario",
+      scheduleDays: "Lunes - Domingo",
+      viewMap: "Ver mapa",
+      comment: "Comentar",
+      share: "Compartir",
+      zoneLine: "Zona {zone} · Ruta {route} · Local {local}",
+      zoneOnly: "Zona {zone}",
+      routeMeta: "Ruta {route}",
+    },
+    menu: {
+      viewProfile: "Ver perfil",
+      myFavorites: "Mis favoritos",
+      myRoutes: "Mis rutas",
+      logout: "Cerrar sesión",
+    },
+    favorites: {
+      emptyTitle: "No tienes favoritos",
+      emptyDesc:
+        "Agrega comerciantes a favoritos para encontrarlos fácilmente aquí.",
+    },
     auth: {
+      email: "Correo",
+      password: "Contraseña",
+      confirmPassword: "Confirmar contraseña",
+      login: {
+        title: "Inicia sesión",
+        submit: "Inicia",
+        forgot: "¿Olvidaste la contraseña?",
+        noAccount: "¿No tienes una cuenta?",
+        register: "Regístrate ahora",
+      },
+      register: {
+        title: "Regístrate",
+        submit: "Regístrate",
+        hasAccount: "¿Ya tienes una cuenta?",
+        login: "Inicia ahora",
+      },
+      forgot: {
+        title: "¿Olvidaste tu\ncontraseña?",
+        description:
+          "No te preocupes. Ingresa el correo electrónico asociado a tu cuenta y te enviaremos un enlace para recuperar tu contraseña.",
+        submit: "Enviar enlace",
+        spamNote: "Recuerda revisar tu bandeja de spam",
+        spamNoteLine2: "o correo no deseado.",
+      },
+      newPassword: {
+        title: "Crear nueva\ncontraseña",
+        description:
+          "Ingresa una nueva contraseña para acceder nuevamente a tu cuenta.",
+        password: "Ingresa tu nueva contraseña",
+        confirm: "Confirmar tu nueva contraseña",
+        submit: "Guardar contraseña",
+      },
+      createProfile: {
+        title: "¿Cómo quieres\nque te llamemos?",
+        description:
+          "Este nombre será visible dentro de la aplicación y podrás cambiarlo más adelante.",
+        namePlaceholder: "Ingresa tu nombre",
+        submit: "Continuar",
+      },
+      passwordUpdated: {
+        title: "¡Contraseña actualizada!",
+        description:
+          "Tu contraseña se actualizó correctamente. Ya puedes iniciar sesión nuevamente.",
+        submit: "Iniciar sesión",
+      },
       checkEmail: {
         title: "Revisa tu correo",
         description:
@@ -225,6 +343,8 @@
         emailDesc:
           "Envíanos tus preguntas, sugerencias o solicitudes de soporte.",
         hoursTitle: "Horario de Atención",
+        hoursWeekday: "Lunes - Sábado / 6:00 am - 5:00 pm",
+        hoursWeekend: "Domingo - Festivos / 6:00 am - 4:00 pm",
       },
       report: {
         title: "Reportar un problema",
@@ -261,7 +381,7 @@
         descPlaceholder: "Tu sugerencia",
         emailLabel: "Correo electrónico (opcional)",
         emailPlaceholder: "Tu correo electrónico",
-        submit: "Enviar reporte",
+        submit: "Enviar sugerencia",
         success: "¡Gracias por tu sugerencia!",
       },
     },
@@ -284,6 +404,12 @@
       english: "English",
     },
 
+    mapFrame: {
+      zoomIn: "Zoom in",
+      zoomOut: "Zoom out",
+      reset: "Reset map view",
+      hint: "Pinch or drag to explore the map",
+    },
     map: {
       searchPlaceholder: "SEARCH IN THE MARKET",
 
@@ -304,6 +430,8 @@
 
       clear: "Clear",
       apply: "Apply",
+      centerMap: "Center map",
+      compass: "Compass",
     },
 
     search: {
@@ -314,13 +442,14 @@
         locals: "Stores",
         products: "Products",
         routes: "Routes",
-        owners: "Owner",
+        owners: "Don/Doña",
       },
     },
     zonesPage: {
       title: "Zones",
       back: "Back",
       mapAlt: "Galería Alameda zones map",
+      hint: "Tap a zone to view it on the map",
       items: {
         1: "Fruits and vegetables zone",
         2: "Gastronomic knowledge",
@@ -401,6 +530,7 @@
       product: {
         title: "Product",
         placeholder: "SEARCH PRODUCT",
+        section: "{business}, Zone {zone}",
       },
       owner: {
         title: "Owner",
@@ -411,10 +541,114 @@
       title: "Routes",
       back: "Back",
       mapAlt: "Galería Alameda routes map",
-      cardsAlt: "Themed routes of the gallery",
+      hint: "Themed tours through the gallery",
+      localsLabel: "Stores",
+      routes: {
+        1: {
+          name: "Colombia chiquita",
+          stops: [
+            { zone: "1", title: "Fruits and vegetables", locals: "#1-62" },
+            { zone: "2", title: "Gastronomic flavors", locals: "#63-116" },
+          ],
+        },
+        2: {
+          name: "Herb trail",
+          stops: [{ zone: "3", title: "Medicinal herbs", locals: "#117-163" }],
+        },
+        3: {
+          name: "Cali, Pacific corner",
+          stops: [
+            { zone: "4", title: "Meats", locals: "#164-207" },
+            { zone: "5", title: "Magic - Religious", locals: "#208-235" },
+          ],
+        },
+        4: {
+          name: "Colors and flavors",
+          stops: [
+            { zone: "6", title: "Flowers", locals: "#236-255" },
+            { zone: "7", title: "Handicrafts", locals: "#256-275" },
+          ],
+        },
+        5: {
+          name: "The Alameda loop",
+          stops: [{ zone: "8", title: "La Vuelta Alameda", locals: "#276-350" }],
+        },
+      },
     },
 
+    vendor: {
+      route: "Route",
+      zone: "Zone",
+      local: "Store",
+      products: "Products",
+      markRoute: "Mark route",
+      viewDetails: "View details",
+      description: "Description",
+      location: "Location",
+      schedule: "Hours",
+      scheduleDays: "Monday - Sunday",
+      viewMap: "View map",
+      comment: "Comment",
+      share: "Share",
+      zoneLine: "Zone {zone} · Route {route} · Store {local}",
+      zoneOnly: "Zone {zone}",
+      routeMeta: "Route {route}",
+    },
+    menu: {
+      viewProfile: "View profile",
+      myFavorites: "My favorites",
+      myRoutes: "My routes",
+      logout: "Log out",
+    },
+    favorites: {
+      emptyTitle: "No favorites yet",
+      emptyDesc: "Add vendors to favorites to find them easily here.",
+    },
     auth: {
+      email: "Email",
+      password: "Password",
+      confirmPassword: "Confirm password",
+      login: {
+        title: "Log in",
+        submit: "Log in",
+        forgot: "Forgot your password?",
+        noAccount: "Don't have an account?",
+        register: "Sign up now",
+      },
+      register: {
+        title: "Sign up",
+        submit: "Sign up",
+        hasAccount: "Already have an account?",
+        login: "Log in now",
+      },
+      forgot: {
+        title: "Forgot your\npassword?",
+        description:
+          "Don't worry. Enter the email associated with your account and we will send you a link to reset your password.",
+        submit: "Send link",
+        spamNote: "Remember to check your spam folder",
+        spamNoteLine2: "or junk mail.",
+      },
+      newPassword: {
+        title: "Create new\npassword",
+        description: "Enter a new password to access your account again.",
+        password: "Enter your new password",
+        confirm: "Confirm your new password",
+        submit: "Save password",
+      },
+      createProfile: {
+        title: "What should we\ncall you?",
+        description:
+          "This name will be visible in the app and you can change it later.",
+        namePlaceholder: "Enter your name",
+        submit: "Continue",
+      },
+      passwordUpdated: {
+        title: "Password updated!",
+        description:
+          "Your password was updated successfully. You can log in again.",
+        submit: "Log in",
+      },
       checkEmail: {
         title: "Check your email",
         description:
@@ -488,6 +722,8 @@
         email: "Email",
         emailDesc: "Send us your questions or support requests.",
         hoursTitle: "Service hours",
+        hoursWeekday: "Monday - Saturday / 6:00 am - 5:00 pm",
+        hoursWeekend: "Sunday - Holidays / 6:00 am - 4:00 pm",
       },
       report: {
         title: "Report a problem",
@@ -524,7 +760,7 @@
         descPlaceholder: "Your suggestion",
         emailLabel: "Email (optional)",
         emailPlaceholder: "Your email address",
-        submit: "Send report",
+        submit: "Send suggestion",
         success: "Thank you for your suggestion!",
       },
     },

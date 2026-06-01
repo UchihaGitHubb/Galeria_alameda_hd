@@ -10,6 +10,7 @@ import { vendors } from "../data/vendors";
 import { searchLocales } from "../data/searchLocales";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
+import { formatMessage } from "../helper/vendor";
 
 import "../styles/CategorySearch.css";
 
@@ -71,7 +72,10 @@ export default function CategorySearch() {
     let label = null;
     if (activeMode === "product" && map.length > 0) {
       const v = map[0];
-      label = `${v.business}, Zona ${v.zone}`;
+      label = formatMessage(t.categorySearch.product.section, {
+        business: v.business,
+        zone: v.zone,
+      });
     }
 
     return { mapResults: map, localeResults: locales, sectionLabel: label };

@@ -108,6 +108,15 @@ export default function Map() {
       }
     }
 
+    const routeFromNav = location.state?.selectedRoute;
+    if (routeFromNav) {
+      setSelectedRoute(String(routeFromNav));
+      setActiveFilterCategory("route");
+      if (location.state?.openFilters) {
+        setShowFilters(true);
+      }
+    }
+
     const vendorId = location.state?.selectedVendorId;
     if (!vendorId) return;
 
@@ -351,7 +360,7 @@ export default function Map() {
                   type="button"
                   className="control-circle"
                   onClick={handleResetMapView}
-                  aria-label="Centrar mapa"
+                  aria-label={t.map.centerMap}
                 >
                   <LocateFixed
                     size={18}
@@ -364,7 +373,7 @@ export default function Map() {
                   type="button"
                   className="control-circle"
                   onClick={handleCompass}
-                  aria-label="Brújula"
+                  aria-label={t.map.compass}
                 >
                   <Compass size={18} strokeWidth={2.3} color={controlIconColor} />
                 </button>

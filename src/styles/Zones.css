@@ -14,13 +14,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 14px 6px;
+  padding: 12px 16px 8px;
   flex-shrink: 0;
 }
 
 .zones-back-button {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
   background: #d37049;
@@ -36,8 +36,8 @@
   margin: 0;
   color: #d37049;
   font-family: "Quicksand", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 700;
   line-height: 1.1;
 }
 
@@ -45,48 +45,56 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 10px 92px;
+  padding: 0 16px 88px;
   -webkit-overflow-scrolling: touch;
 }
 
-.zones-map-wrap {
+.zones-map-card {
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(211, 112, 73, 0.14);
+  box-shadow: 0 6px 20px rgba(211, 112, 73, 0.1);
+}
+
+.zones-map-card__frame {
   position: relative;
-  width: 100%;
-  margin: 0 0 8px;
-  line-height: 0;
-  border-radius: 14px;
+  max-height: min(44vh, 260px);
+  min-height: 200px;
+  height: min(44vh, 260px);
   overflow: hidden;
+  border-radius: 14px;
   background: #fef9f0;
 }
 
-.zones-map-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  border: 0;
-  image-rendering: auto;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+.zones-hint {
+  margin: 0 0 12px;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a67a4f;
+  line-height: 1.35;
 }
 
 .zones-compass {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 52px;
-  height: 52px;
+  top: 6px;
+  right: 6px;
+  width: 48px;
+  height: 48px;
   pointer-events: none;
   line-height: 1;
+  z-index: 6;
 }
 
 .zones-compass__ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #d37049;
@@ -97,17 +105,17 @@
 }
 
 .zones-compass__needle {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   transform: rotate(-12deg);
   display: block;
 }
 
 .zones-compass__label {
   position: absolute;
-  font-family: "DistressedSherlock", "Quicksand", sans-serif;
-  font-size: 10px;
-  font-weight: normal;
+  font-family: "Quicksand", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
   color: #d37049;
   line-height: 1;
 }
@@ -136,58 +144,58 @@
   transform: translateY(-50%);
 }
 
-.zones-list {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  padding-bottom: 4px;
+.zones-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.zones-pill {
+.zones-chip {
   display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: 44px;
-  padding: 0 14px 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 88px;
+  padding: 12px;
   border: none;
-  border-radius: 999px;
+  border-radius: 18px;
   background: var(--zone-color);
   cursor: pointer;
   text-align: left;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(90, 70, 53, 0.08);
+  box-shadow: 0 3px 10px rgba(90, 70, 53, 0.1);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.zones-pill:active {
-  transform: scale(0.99);
+.zones-chip:active {
+  transform: scale(0.98);
 }
 
-.zones-pill__number {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  margin: 0;
+.zones-chip__number {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #ffffff;
   color: var(--zone-number);
   font-family: "Quicksand", sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  flex-shrink: 0;
 }
 
-.zones-pill__label {
-  flex: 1;
-  padding: 6px 0 6px 10px;
+.zones-chip__label {
   color: var(--zone-text);
   font-family: "Quicksand", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .zones-page--dark .zones-header-title {
@@ -199,8 +207,18 @@
   color: #d37049;
 }
 
-.zones-page--dark .zones-map-wrap {
+.zones-page--dark .zones-map-card {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.zones-page--dark .zones-map-card__frame {
   background: #1b1b1b;
+}
+
+.zones-page--dark .zones-hint {
+  color: #bdbdbd;
 }
 
 .zones-page--dark .zones-compass__ring {
@@ -215,6 +233,6 @@
   fill: #d37049;
 }
 
-.zones-page--dark .zones-pill__number {
-  background: rgba(255, 255, 255, 0.92);
+.zones-page--dark .zones-chip__number {
+  background: rgba(255, 255, 255, 0.95);
 }

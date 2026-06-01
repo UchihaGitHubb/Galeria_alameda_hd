@@ -10,6 +10,7 @@ import { vendors } from "../data/vendors";
 import { getFavorites } from "../helper/favorites";
 
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import "../styles/Favorites.css";
 
@@ -17,6 +18,7 @@ export default function Favorites() {
   const location = useLocation();
 
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   const [favoriteIds, setFavoriteIds] = useState(getFavorites());
 
@@ -43,7 +45,7 @@ export default function Favorites() {
               color: darkMode ? "#FFFFFF" : "#D9774A",
             }}
           >
-            Favoritos
+            {t.nav.favorites}
           </h1>
 
           <div
@@ -71,14 +73,14 @@ export default function Favorites() {
           >
             <Heart size={50} strokeWidth={1.5} />
 
-            <h2>No tienes favoritos</h2>
+            <h2>{t.favorites.emptyTitle}</h2>
 
             <p
               style={{
                 color: darkMode ? "#BDBDBD" : "#9F876C",
               }}
             >
-              Agrega comerciantes a favoritos para encontrarlos fácilmente aquí.
+              {t.favorites.emptyDesc}
             </p>
           </div>
         ) : (

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { Check } from "lucide-react";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function PasswordUpdated() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -60,10 +62,9 @@ export default function PasswordUpdated() {
               textAlign: "center",
             }}
           >
-            ¡Contraseña actualizada!
+            {t.auth.passwordUpdated.title}
           </h1>
 
-          {/* Texto */}
           <p
             style={{
               margin: 0,
@@ -75,9 +76,7 @@ export default function PasswordUpdated() {
               maxWidth: "320px",
             }}
           >
-            Tu contraseña se actualizó correctamente.
-            <br />
-            Ya puedes iniciar sesión nuevamente.
+            {t.auth.passwordUpdated.description}
           </p>
 
           {/* Espaciador */}
@@ -102,7 +101,7 @@ export default function PasswordUpdated() {
               marginTop: "30px",
             }}
           >
-            Iniciar sesión
+            {t.auth.passwordUpdated.submit}
           </button>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaLock } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function NewPassword() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -64,11 +66,10 @@ export default function NewPassword() {
                 fontSize: "32px",
                 fontWeight: "700",
                 lineHeight: "1.15",
+                whiteSpace: "pre-line",
               }}
             >
-              Crear nueva
-              <br />
-              contraseña
+              {t.auth.newPassword.title}
             </h1>
           </div>
 
@@ -83,7 +84,7 @@ export default function NewPassword() {
               maxWidth: "330px",
             }}
           >
-            Ingresa una nueva contraseña para acceder nuevamente a tu cuenta.
+            {t.auth.newPassword.description}
           </p>
 
           {/* Nueva contraseña */}
@@ -102,7 +103,7 @@ export default function NewPassword() {
 
             <input
               type="password"
-              placeholder="Ingresa tu nueva contraseña"
+              placeholder={t.auth.newPassword.password}
               style={{
                 flex: 1,
                 border: "none",
@@ -131,7 +132,7 @@ export default function NewPassword() {
 
             <input
               type="password"
-              placeholder="Confirmar tu nueva contraseña"
+              placeholder={t.auth.newPassword.confirm}
               style={{
                 flex: 1,
                 border: "none",
@@ -168,7 +169,7 @@ export default function NewPassword() {
                 cursor: "pointer",
               }}
             >
-              Guardar contraseña
+              {t.auth.newPassword.submit}
             </button>
           </div>
         </div>

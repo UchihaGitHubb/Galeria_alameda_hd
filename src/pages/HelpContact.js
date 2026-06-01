@@ -5,15 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { CONTACT } from "../data/contactInfo";
 
 export default function HelpContact() {
-  const { t, language } = useLanguage();
-
-  const hours =
-    language === "en"
-      ? {
-          weekday: "Monday - Saturday / 6:00 am - 5:00 pm",
-          weekend: "Sunday - Holidays / 6:00 am - 4:00 pm",
-        }
-      : CONTACT.hours;
+  const { t } = useLanguage();
 
   const channels = [
     {
@@ -73,8 +65,8 @@ export default function HelpContact() {
             <Clock size={24} strokeWidth={2.2} />
           </span>
           <div className="help-hours-card__body">
-            <p>{hours.weekday}</p>
-            <p>{hours.weekend}</p>
+            <p>{t.help.contact.hoursWeekday}</p>
+            <p>{t.help.contact.hoursWeekend}</p>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { ChevronLeft } from "lucide-react";
 
 import MobileContainer from "../components/MobileContainer";
 import BottomNav from "../components/BottomNav";
+import ZoomableMapFrame from "../components/ZoomableMapFrame";
 import { getMapaZonasImage, ZONE_PILLS } from "../data/zones";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -36,44 +37,45 @@ export default function Zones() {
         </header>
 
         <div className="zones-content">
-          <div className="zones-map-wrap">
-            <img
-              src={mapaZonasImage}
-              alt={t.zonesPage.mapAlt}
-              className="zones-map-image"
-              decoding="async"
-            />
+          <section className="zones-map-card">
+            <div className="zones-map-card__frame">
+              <ZoomableMapFrame src={mapaZonasImage} alt={t.zonesPage.mapAlt} />
 
-            <div className="zones-compass" aria-hidden="true">
-              <span className="zones-compass__label zones-compass__label--n">
-                N
-              </span>
-              <span className="zones-compass__label zones-compass__label--e">
-                E
-              </span>
-              <span className="zones-compass__label zones-compass__label--s">
-                S
-              </span>
-              <span className="zones-compass__label zones-compass__label--o">
-                O
-              </span>
-              <div className="zones-compass__ring">
-                <svg
-                  className="zones-compass__needle"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4L15.5 16H12V12H8.5L12 4Z"
-                    fill="#FFFFFF"
-                  />
-                </svg>
+              <div className="zones-compass" aria-hidden="true">
+                <span className="zones-compass__label zones-compass__label--n">
+                  N
+                </span>
+                <span className="zones-compass__label zones-compass__label--e">
+                  E
+                </span>
+                <span className="zones-compass__label zones-compass__label--s">
+                  S
+                </span>
+                <span className="zones-compass__label zones-compass__label--o">
+                  O
+                </span>
+                <div className="zones-compass__ring">
+                  <svg
+                    className="zones-compass__needle"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 4L15.5 16H12V12H8.5L12 4Z"
+                      fill="#FFFFFF"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="zones-list">
+          <p className="zones-hint">
+            {t.zonesPage.hint} · {t.mapFrame.hint}
+          </p>
+
+          <div className="zones-grid">
             {ZONE_PILLS.map((zone) => {
               const label = t.zonesPage.items[zone.id];
 
@@ -81,7 +83,7 @@ export default function Zones() {
                 <button
                   key={zone.id}
                   type="button"
-                  className="zones-pill"
+                  className="zones-chip"
                   style={{
                     "--zone-color": zone.color,
                     "--zone-text": zone.textColor,
@@ -90,8 +92,8 @@ export default function Zones() {
                   onClick={() => handleZoneSelect(zone.id)}
                   aria-label={label}
                 >
-                  <span className="zones-pill__number">{zone.id}</span>
-                  <span className="zones-pill__label">{label}</span>
+                  <span className="zones-chip__number">{zone.id}</span>
+                  <span className="zones-chip__label">{label}</span>
                 </button>
               );
             })}

@@ -17,8 +17,13 @@ import BottomNav from "../components/BottomNav";
 import colombiaChiquita from "../assets/brands/colombia.png";
 
 import { isFavorite, toggleFavorite } from "../helper/favorites";
-import { getVendorPortrait } from "../helper/vendor";
+import {
+  formatMessage,
+  getVendorDescription,
+  getVendorPortrait,
+} from "../helper/vendor";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import "../styles/VendorDetail.css";
 
@@ -27,6 +32,7 @@ export default function VendorDetail() {
   const navigate = useNavigate();
 
   const { darkMode } = useTheme();
+  const { t, language } = useLanguage();
 
   const vendor = vendors.find((v) => v.id === Number(id));
 
@@ -82,15 +88,19 @@ export default function VendorDetail() {
 
           <div className="info-row">
             <div className="info-item">
-              <span>Ruta</span>
+              <span>{t.vendor.route}</span>
 
               <div className="route-chip">
-                <img src={vendor.routeIcon} alt="Ruta" className="route-icon" />
+                <img
+                  src={vendor.routeIcon}
+                  alt={t.vendor.route}
+                  className="route-icon"
+                />
               </div>
             </div>
 
             <div className="info-item">
-              <span>Zona</span>
+              <span>{t.vendor.zone}</span>
 
               <div
                 className="zone-chip"
@@ -103,7 +113,7 @@ export default function VendorDetail() {
             </div>
 
             <div className="info-item">
-              <span>Local</span>
+              <span>{t.vendor.local}</span>
 
               <div className="local-chip">{vendor.local}</div>
             </div>
@@ -112,15 +122,15 @@ export default function VendorDetail() {
           <div className="section-divider" />
 
           <section>
-            <h3>Descripción</h3>
+            <h3>{t.vendor.description}</h3>
 
-            <p>{vendor.description}</p>
+            <p>{getVendorDescription(vendor, language)}</p>
           </section>
 
           <div className="section-divider" />
 
           <section>
-            <h3>Productos</h3>
+            <h3>{t.vendor.products}</h3>
 
             <div className="products-grid">
               {vendor.products.map((product, index) => (
@@ -134,11 +144,15 @@ export default function VendorDetail() {
           <div className="section-divider" />
 
           <section>
-            <h3>Ubicación</h3>
+            <h3>{t.vendor.location}</h3>
 
             <div className="location-row">
               <span>
-                Zona {vendor.zone} · Ruta {vendor.route} · Local {vendor.local}
+                {formatMessage(t.vendor.zoneLine, {
+                  zone: vendor.zone,
+                  route: vendor.route,
+                  local: vendor.local,
+                })}
               </span>
 
               <button
@@ -151,7 +165,7 @@ export default function VendorDetail() {
                   })
                 }
               >
-                Ver mapa
+                {t.vendor.viewMap}
               </button>
             </div>
 
@@ -166,7 +180,7 @@ export default function VendorDetail() {
                 })
               }
             >
-              Marcar ruta
+              {t.vendor.markRoute}
               <ChevronRight size={18} />
             </button>
           </section>
@@ -174,10 +188,10 @@ export default function VendorDetail() {
           <div className="section-divider" />
 
           <section>
-            <h3>Horario</h3>
+            <h3>{t.vendor.schedule}</h3>
 
             <div className="schedule-row">
-              <span>Lunes - Domingo</span>
+              <span>{t.vendor.scheduleDays}</span>
 
               <span>{vendor.schedule}</span>
             </div>
@@ -188,12 +202,12 @@ export default function VendorDetail() {
           <div className="action-buttons">
             <button>
               <MessageCircle size={18} />
-              Comentar
+              {t.vendor.comment}
             </button>
 
             <button>
               <Share2 size={18} />
-              Compartir
+              {t.vendor.share}
             </button>
           </div>
 

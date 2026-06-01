@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaChevronLeft } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -59,21 +61,16 @@ export default function ForgotPassword() {
 
             <h1
               style={{
-                //marginTop: 0,//
-                //margin: 30,//
                 color: "#C7633F",
                 fontFamily: "Quicksand",
                 fontSize: "32px",
                 fontWeight: "700",
                 lineHeight: "1.15",
-                textAlign: "",
-
                 flex: 1,
+                whiteSpace: "pre-line",
               }}
             >
-              ¿Olvidaste tu
-              <br />
-              contraseña?
+              {t.auth.forgot.title}
             </h1>
           </div>
 
@@ -87,8 +84,7 @@ export default function ForgotPassword() {
               marginBottom: "55px",
             }}
           >
-            No te preocupes. Ingresa el correo electrónico asociado a tu cuenta
-            y te enviaremos un enlace para recuperar tu contraseña.
+            {t.auth.forgot.description}
           </p>
 
           {/* Campo correo */}
@@ -110,7 +106,7 @@ export default function ForgotPassword() {
 
             <input
               type="email"
-              placeholder="Correo"
+              placeholder={t.auth.email}
               style={{
                 flex: 1,
                 border: "none",
@@ -147,7 +143,7 @@ export default function ForgotPassword() {
                 cursor: "pointer",
               }}
             >
-              Enviar enlace
+              {t.auth.forgot.submit}
             </button>
           </div>
 
@@ -162,8 +158,9 @@ export default function ForgotPassword() {
               lineHeight: "1.25",
             }}
           >
-            Recuerda revisar tu bandeja de spam
-            <br />o correo no deseado.
+            {t.auth.forgot.spamNote}
+            <br />
+            {t.auth.forgot.spamNoteLine2}
           </div>
         </div>
       </div>

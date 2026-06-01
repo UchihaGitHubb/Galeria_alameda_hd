@@ -24,7 +24,7 @@ export default function Menu() {
           <div className="profile-info">
             <h2>Isabella Perilla</h2>
 
-            <button className="profile-link">Ver perfil</button>
+            <button className="profile-link">{t.menu.viewProfile}</button>
           </div>
         </div>
 
@@ -33,11 +33,11 @@ export default function Menu() {
         <div className="menu-options">
           <MenuItem
             icon={<Heart />}
-            label="Mis favoritos"
+            label={t.menu.myFavorites}
             onClick={() => navigate("/favorites")}
           />
 
-          <MenuItem icon={<MapPinned />} label="Mis rutas" />
+          <MenuItem icon={<MapPinned />} label={t.menu.myRoutes} />
 
           <MenuItem
             icon={<CircleHelp />}
@@ -51,7 +51,7 @@ export default function Menu() {
         <div className="menu-options">
           <MenuItem
             icon={<Settings />}
-            label="Configuración"
+            label={t.settings.title}
             onClick={() => navigate("/settings")}
           />
         </div>
@@ -61,7 +61,7 @@ export default function Menu() {
         <div className="menu-options">
           <MenuItem
             icon={<LogOut />}
-            label="Cerrar sesión"
+            label={t.menu.logout}
             onClick={() => navigate("/login")}
           />
         </div>

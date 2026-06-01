@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaChevronLeft } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -64,7 +66,7 @@ export default function Register() {
                 margin: 0,
               }}
             >
-              Regístrate
+              {t.auth.register.title}
             </h1>
           </div>
 
@@ -88,7 +90,7 @@ export default function Register() {
 
             <input
               type="email"
-              placeholder="Correo"
+              placeholder={t.auth.email}
               style={{
                 flex: 1,
                 border: "none",
@@ -118,7 +120,7 @@ export default function Register() {
 
             <input
               type="password"
-              placeholder="Contraseña"
+              placeholder={t.auth.password}
               style={{
                 flex: 1,
                 border: "none",
@@ -147,7 +149,7 @@ export default function Register() {
 
             <input
               type="password"
-              placeholder="Confirmar contraseña"
+              placeholder={t.auth.confirmPassword}
               style={{
                 flex: 1,
                 border: "none",
@@ -184,7 +186,7 @@ export default function Register() {
                 cursor: "pointer",
               }}
             >
-              Regístrate
+              {t.auth.register.submit}
             </button>
           </div>
 
@@ -201,7 +203,7 @@ export default function Register() {
               fontSize: "15px",
             }}
           >
-            <span>¿Ya tienes una cuenta?</span>
+            <span>{t.auth.register.hasAccount}</span>
 
             <span
               onClick={() => navigate("/login")}
@@ -211,7 +213,7 @@ export default function Register() {
                 cursor: "pointer",
               }}
             >
-              Inicia ahora
+              {t.auth.register.login}
             </span>
           </div>
         </div>

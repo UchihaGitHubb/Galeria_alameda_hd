@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function CreateProfileName() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -37,11 +39,10 @@ export default function CreateProfileName() {
               lineHeight: "1.2",
               margin: 0,
               marginBottom: "25px",
+              whiteSpace: "pre-line",
             }}
           >
-            ¿Cómo quieres
-            <br />
-            que te llamemos?
+            {t.auth.createProfile.title}
           </h1>
 
           <p
@@ -53,11 +54,7 @@ export default function CreateProfileName() {
               marginBottom: "55px",
             }}
           >
-            Este nombre será visible dentro
-            <br />
-            de la aplicación y podrás
-            <br />
-            cambiarlo más adelante.
+            {t.auth.createProfile.description}
           </p>
 
           <div
@@ -74,7 +71,7 @@ export default function CreateProfileName() {
 
             <input
               type="text"
-              placeholder="Ingresa tu nombre"
+              placeholder={t.auth.createProfile.namePlaceholder}
               style={{
                 flex: 1,
                 border: "none",
@@ -110,7 +107,7 @@ export default function CreateProfileName() {
                 cursor: "pointer",
               }}
             >
-              Continuar
+              {t.auth.createProfile.submit}
             </button>
           </div>
         </div>

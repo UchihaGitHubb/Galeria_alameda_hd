@@ -1,8 +1,10 @@
 import { useTheme } from "../context/ThemeContext";
-import { getVendorPortrait } from "../helper/vendor";
+import { formatMessage, getVendorPortrait } from "../helper/vendor";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function SearchLocaleCard({ locale, displayMode }) {
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
   const portrait = getVendorPortrait({ gender: locale.gender });
 
   let title =
@@ -46,7 +48,7 @@ export default function SearchLocaleCard({ locale, displayMode }) {
           className="search-locale-card__meta"
           style={{ color: darkMode ? "#AAAAAA" : "#A67A4F" }}
         >
-          Ruta {locale.route}
+          {formatMessage(t.vendor.routeMeta, { route: locale.route })}
           {locale.owner && locale.owner !== "Por confirmar"
             ? ` · ${locale.owner}`
             : ""}

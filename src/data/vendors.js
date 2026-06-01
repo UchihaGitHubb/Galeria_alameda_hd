@@ -31,6 +31,8 @@ export const vendors = [
     photo: donaMargotPhoto,
     description:
       "Productos elaborados a mano con técnicas tradicionales. Piezas únicas hechas con amor.",
+    descriptionEn:
+      "Handmade products using traditional techniques. Unique pieces made with care.",
     local: "#278",
     zone: "7",
     route: "4",
@@ -49,6 +51,8 @@ export const vendors = [
     photo: donaLesviaPhoto,
     description:
       "Hierbas medicinales y productos naturales seleccionados cuidadosamente.",
+    descriptionEn:
+      "Medicinal herbs and natural products carefully selected.",
     local: "#791",
     zone: "3",
     route: "2",
@@ -66,6 +70,7 @@ export const vendors = [
     zoneColor: "#a1a64d",
     photo: donaPaolaPhoto,
     description: "Artesanías inspiradas en la tradición cultural colombiana.",
+    descriptionEn: "Crafts inspired by Colombian cultural tradition.",
     local: "#731",
     zone: "6",
     route: "5",
@@ -83,6 +88,7 @@ export const vendors = [
     zoneColor: "#8abee8",
     photo: donJuanPhoto,
     description: "Productos frescos y seleccionados diariamente.",
+    descriptionEn: "Fresh products selected daily.",
     local: "#138",
     zone: "5",
     route: "3",

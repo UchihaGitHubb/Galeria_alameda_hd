@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import MobileContainer from "../components/MobileContainer";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background="#C7633F">
@@ -38,10 +40,9 @@ export default function Login() {
               marginBottom: "40px",
             }}
           >
-            Inicia sesión
+            {t.auth.login.title}
           </h1>
 
-          {/* Correo */}
           <div
             style={{
               background: "#E0AE99",
@@ -61,7 +62,7 @@ export default function Login() {
 
             <input
               type="email"
-              placeholder="Correo"
+              placeholder={t.auth.email}
               style={{
                 flex: 1,
                 border: "none",
@@ -75,7 +76,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Contraseña */}
           <div
             style={{
               background: "#E0AE99",
@@ -90,7 +90,7 @@ export default function Login() {
 
             <input
               type="password"
-              placeholder="Contraseña"
+              placeholder={t.auth.password}
               style={{
                 flex: 1,
                 border: "none",
@@ -104,7 +104,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Olvidaste contraseña */}
           <div
             style={{
               display: "flex",
@@ -124,11 +123,10 @@ export default function Login() {
                 padding: 0,
               }}
             >
-              ¿Olvidaste la contraseña?
+              {t.auth.login.forgot}
             </button>
           </div>
 
-          {/* Botón Inicia */}
           <div
             style={{
               display: "flex",
@@ -151,11 +149,10 @@ export default function Login() {
                 cursor: "pointer",
               }}
             >
-              Inicia
+              {t.auth.login.submit}
             </button>
           </div>
 
-          {/* Registro */}
           <div
             style={{
               display: "flex",
@@ -168,7 +165,7 @@ export default function Login() {
               fontSize: "15px",
             }}
           >
-            <span>¿No tienes una cuenta?</span>
+            <span>{t.auth.login.noAccount}</span>
 
             <span
               onClick={() => navigate("/register")}
@@ -178,7 +175,7 @@ export default function Login() {
                 cursor: "pointer",
               }}
             >
-              Regístrate ahora
+              {t.auth.login.register}
             </span>
           </div>
         </div>

@@ -8,11 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { Heart, ChevronRight } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
+import { formatMessage } from "../helper/vendor";
 
 export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
   const navigate = useNavigate();
 
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   const products = vendor?.products || [];
 
@@ -31,7 +34,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
     cardSubtitle = vendor.business;
   } else if (displayMode === "product") {
     cardTitle = vendor.business;
-    cardSubtitle = `Zona ${vendor.zone}`;
+    cardSubtitle = formatMessage(t.vendor.zoneOnly, { zone: vendor.zone });
   }
 
   return (
@@ -183,7 +186,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                   marginBottom: "4px",
                 }}
               >
-                Ruta
+                {t.vendor.route}
               </div>
 
               <div
@@ -197,7 +200,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
               >
                 <img
                   src={vendor.routeIcon}
-                  alt="Ruta"
+                  alt={t.vendor.route}
                   style={{
                     width: "40px",
                     height: "40px",
@@ -217,7 +220,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                   marginBottom: "4px",
                 }}
               >
-                Zona
+                {t.vendor.zone}
               </div>
 
               <div
@@ -249,7 +252,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                   marginBottom: "4px",
                 }}
               >
-                Local
+                {t.vendor.local}
               </div>
 
               <div
@@ -290,7 +293,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                   marginBottom: "6px",
                 }}
               >
-                Productos
+                {t.vendor.products}
               </div>
 
               <div
@@ -364,7 +367,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                   cursor: "pointer",
                 }}
               >
-                Marcar ruta
+                {t.vendor.markRoute}
                 <ChevronRight size={15} />
               </button>
             )}
@@ -390,7 +393,7 @@ export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
                 cursor: "pointer",
               }}
             >
-              Ver detalles
+              {t.vendor.viewDetails}
             </button>
           </div>
         </div>
