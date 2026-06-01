@@ -22,6 +22,14 @@ import VendorDetail from "./pages/VendorDetail";
 import Favorites from "./pages/Favorites";
 import Menu from "./pages/Menu";
 import Settings from "./pages/Settings";
+import Search from "./pages/Search";
+import CategorySearch from "./pages/CategorySearch";
+import RoutesPage from "./pages/RoutesPage";
+import HelpHub from "./pages/HelpHub";
+import HelpFaq from "./pages/HelpFaq";
+import HelpContact from "./pages/HelpContact";
+import HelpReport from "./pages/HelpReport";
+import HelpSuggestion from "./pages/HelpSuggestion";
 
 export default function App() {
   return (
@@ -52,10 +60,19 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/map" element={<Map />} />
             <Route path="/zones" element={<Zones />} />
+            <Route path="/routes" element={<RoutesPage />} />
             <Route path="/vendor/:id" element={<VendorDetail />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/search/:mode" element={<CategorySearch />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/settings" element={<Settings />} />
+
+            <Route path="/help" element={<HelpHub />} />
+            <Route path="/help/faq" element={<HelpFaq />} />
+            <Route path="/help/contact" element={<HelpContact />} />
+            <Route path="/help/report" element={<HelpReport />} />
+            <Route path="/help/suggestion" element={<HelpSuggestion />} />
           </Routes>
         </BrowserRouter>
       </LanguageProvider>

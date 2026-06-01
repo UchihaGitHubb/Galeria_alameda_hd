@@ -9,7 +9,7 @@ import { Heart, ChevronRight } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
 
-export default function VendorCard({ vendor, onMarkRoute }) {
+export default function VendorCard({ vendor, onMarkRoute, displayMode }) {
   const navigate = useNavigate();
 
   const { darkMode } = useTheme();
@@ -17,6 +17,22 @@ export default function VendorCard({ vendor, onMarkRoute }) {
   const products = vendor?.products || [];
 
   const [favorite, setFavorite] = useState(isFavorite(vendor.id));
+
+  let cardTitle = vendor.name;
+  let cardSubtitle = vendor.business;
+
+  if (displayMode === "business") {
+    cardTitle = vendor.business;
+    cardSubtitle = vendor.name;
+  } else if (displayMode === "local") {
+    cardTitle = vendor.local.startsWith("#")
+      ? vendor.local
+      : `Local #${vendor.local}`;
+    cardSubtitle = vendor.business;
+  } else if (displayMode === "product") {
+    cardTitle = vendor.business;
+    cardSubtitle = `Zona ${vendor.zone}`;
+  }
 
   return (
     <div
@@ -98,7 +114,7 @@ export default function VendorCard({ vendor, onMarkRoute }) {
                   lineHeight: 1.1,
                 }}
               >
-                {vendor.name}
+                {cardTitle}
               </h2>
 
               <p
@@ -111,7 +127,7 @@ export default function VendorCard({ vendor, onMarkRoute }) {
                   fontSize: "14px",
                 }}
               >
-                {vendor.business}
+                {cardSubtitle}
               </p>
             </div>
 
@@ -174,7 +190,6 @@ export default function VendorCard({ vendor, onMarkRoute }) {
                 style={{
                   width: "24px",
                   height: "24px",
-
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

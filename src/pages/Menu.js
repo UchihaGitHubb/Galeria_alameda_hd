@@ -6,12 +6,14 @@ import BottomNav from "../components/BottomNav";
 import { Heart, MapPinned, CircleHelp, Settings, LogOut } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import "../styles/Menu.css";
 
 export default function Menu() {
   const navigate = useNavigate();
   const { darkMode } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <MobileContainer background={darkMode ? "#1B1B1B" : "#F1ECE3"}>
@@ -37,7 +39,11 @@ export default function Menu() {
 
           <MenuItem icon={<MapPinned />} label="Mis rutas" />
 
-          <MenuItem icon={<CircleHelp />} label="Ayuda" />
+          <MenuItem
+            icon={<CircleHelp />}
+            label={t.settings.help}
+            onClick={() => navigate("/help", { state: { from: "/menu" } })}
+          />
         </div>
 
         <div className="menu-divider" />

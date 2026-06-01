@@ -59,71 +59,75 @@
   display: block;
   width: 100%;
   height: auto;
+  background: transparent;
 }
 
+/* Brújula — referencia: N arriba, E izquierda, S abajo, O derecha */
 .zones-compass {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 52px;
-  height: 52px;
+  top: 0;
+  right: 0;
+  width: 58px;
+  height: 58px;
   pointer-events: none;
 }
 
 .zones-compass__ring {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   background: #d37049;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zones-compass__needle {
+  width: 22px;
+  height: 22px;
+  transform: rotate(-12deg);
+  display: block;
 }
 
 .zones-compass__label {
   position: absolute;
-  font-family: "Quicksand", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
+  font-family: "DistressedSherlock", "Quicksand", sans-serif;
+  font-size: 11px;
+  font-weight: normal;
   color: #d37049;
   line-height: 1;
 }
 
 .zones-compass__label--n {
-  top: -2px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .zones-compass__label--e {
-  right: -2px;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .zones-compass__label--s {
-  bottom: -2px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .zones-compass__label--o {
-  left: -2px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.zones-compass__needle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 14px solid #ffffff;
-  transform: translate(-50%, -72%) rotate(45deg);
-  transform-origin: center bottom;
-}
-
+/* Lista de zonas — pastillas HTML como el diseño */
 .zones-list {
   display: flex;
   flex-direction: column;
@@ -131,21 +135,48 @@
   padding-bottom: 8px;
 }
 
-.zones-pill-btn {
-  display: block;
+.zones-pill {
+  display: flex;
+  align-items: center;
   width: 100%;
-  padding: 0;
+  min-height: 46px;
+  padding: 0 18px 0 0;
   border: none;
-  background: transparent;
+  border-radius: 999px;
+  background: var(--zone-color);
   cursor: pointer;
+  text-align: left;
+  overflow: hidden;
 }
 
-.zones-pill-btn img {
-  display: block;
-  width: 100%;
-  height: auto;
+.zones-pill__number {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--zone-number);
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
+.zones-pill__label {
+  flex: 1;
+  padding: 8px 0 8px 12px;
+  color: var(--zone-text);
+  font-family: "Quicksand", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Modo oscuro */
 .zones-page--dark .zones-header-title {
   color: #ffffff;
 }
@@ -163,6 +194,10 @@
   color: #ffffff;
 }
 
-.zones-page--dark .zones-compass__needle {
-  border-bottom-color: #d37049;
+.zones-page--dark .zones-compass__needle path {
+  fill: #d37049;
+}
+
+.zones-page--dark .zones-pill__number {
+  background: rgba(255, 255, 255, 0.92);
 }

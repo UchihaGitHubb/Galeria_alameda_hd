@@ -8,6 +8,7 @@ import MobileContainer from "../components/MobileContainer";
 import MapMarker from "../components/MapMarker";
 import BottomNav from "../components/BottomNav";
 import VendorCard from "../components/VendorCard";
+import MapCategoryFilter from "../components/MapCategoryFilter";
 import { vendors } from "../data/vendors";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 
 import "../styles/Map.css";
+import "../styles/MapCategoryFilter.css";
 
 const MARGOT_ROUTE = [
   { x: 30, y: 59.9 },
@@ -76,6 +78,13 @@ export default function Map() {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState(null);
   const [selectedZone, setSelectedZone] = useState(null);
+  const [ownerGenderFilter, setOwnerGenderFilter] = useState(null);
+  const [activeFilterCategory, setActiveFilterCategory] = useState(null);
+
+  const [pendingCategory, setPendingCategory] = useState(null);
+  const [pendingRoute, setPendingRoute] = useState(null);
+  const [pendingZone, setPendingZone] = useState(null);
+  const [pendingOwner, setPendingOwner] = useState(null);
 
   const mapRef = useRef(null);
   const transformRef = useRef(null);
@@ -92,6 +101,7 @@ export default function Map() {
     const zoneFromNav = location.state?.selectedZone;
     if (zoneFromNav) {
       setSelectedZone(String(zoneFromNav));
+      setActiveFilterCategory("zone");
       if (location.state?.openFilters) {
         setShowFilters(true);
       }
@@ -127,42 +137,101 @@ export default function Map() {
   };
 
   const filteredVendors = vendors.filter((vendor) => {
+    const q = searchTerm.trim().toLowerCase();
+    const hasFilter =
+      q !== "" ||
+      selectedRoute !== null ||
+      selectedZone !== null ||
+      ownerGenderFilter !== null ||
+      activeFilterCategory === "product";
+
+    if (!hasFilter) return false;
+
     const matchesSearch =
-      searchTerm.trim() === ""
-        ? false
-        : [
-            vendor.name,
-            vendor.business,
-            vendor.local,
-            vendor.zone,
-            vendor.route,
-          ]
-            .join(" ")
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase());
+      q === "" ||
+      [vendor.name, vendor.business, vendor.local, vendor.zone, vendor.route]
+        .join(" ")
+        .toLowerCase()
+        .includes(q);
 
     const matchesRoute =
-      selectedRoute === null ? true : vendor.route === selectedRoute;
+      selectedRoute === null || activeFilterCategory === "owner"
+        ? true
+        : vendor.route === selectedRoute;
 
     const matchesZone =
       selectedZone === null ? true : vendor.zone === selectedZone;
 
-    if (
-      searchTerm.trim() === "" &&
-      selectedRoute === null &&
-      selectedZone === null
-    ) {
-      return false;
-    }
+    const matchesOwner =
+      ownerGenderFilter === null ? true : vendor.gender === ownerGenderFilter;
+
+    const matchesCategory =
+      activeFilterCategory === "local"
+        ? q === "" || vendor.local.toLowerCase().includes(q)
+        : activeFilterCategory === "business"
+          ? q === "" || vendor.business.toLowerCase().includes(q)
+          : activeFilterCategory === "product"
+            ? (vendor.products || []).length > 0
+            : true;
 
     return (
-      (searchTerm.trim() === "" || matchesSearch) && matchesRoute && matchesZone
+      matchesSearch &&
+      matchesRoute &&
+      matchesZone &&
+      matchesOwner &&
+      matchesCategory
     );
   });
 
+  const openFilters = () => {
+    setPendingCategory(activeFilterCategory);
+    setPendingRoute(selectedRoute);
+    setPendingZone(selectedZone);
+    setPendingOwner(ownerGenderFilter);
+    setShowFilters(true);
+  };
+
+  const applyFilters = () => {
+    setActiveFilterCategory(pendingCategory);
+    if (pendingCategory === "route") {
+      setSelectedRoute(pendingRoute);
+      setSelectedZone(null);
+      setOwnerGenderFilter(null);
+    } else if (pendingCategory === "zone") {
+      setSelectedZone(pendingZone);
+      setSelectedRoute(null);
+      setOwnerGenderFilter(null);
+    } else if (pendingCategory === "owner") {
+      setOwnerGenderFilter(pendingOwner);
+      setSelectedRoute(null);
+      setSelectedZone(null);
+    } else {
+      setSelectedRoute(null);
+      setSelectedZone(null);
+      setOwnerGenderFilter(null);
+    }
+    setSelectedVendor(null);
+    setShowFilters(false);
+  };
+
+  const clearFilters = () => {
+    setPendingCategory(null);
+    setPendingRoute(null);
+    setPendingZone(null);
+    setPendingOwner(null);
+    setActiveFilterCategory(null);
+    setSelectedRoute(null);
+    setSelectedZone(null);
+    setOwnerGenderFilter(null);
+    setSearchTerm("");
+    setSelectedVendor(null);
+    setActiveRoute(null);
+    setShowFilters(false);
+  };
+
   return (
     <MobileContainer background={mapBg}>
-      <div className="map-page">
+      <div className={`map-page ${darkMode ? "map-page--dark" : ""}`}>
         <div className="search-wrapper">
           <div className="search-bar">
             <Search size={20} strokeWidth={2.3} color={accentColor} />
@@ -182,7 +251,7 @@ export default function Map() {
           <button
             type="button"
             className="filter-btn"
-            onClick={() => setShowFilters(true)}
+            onClick={openFilters}
             aria-label={t.map.filterRoute}
           >
             <SlidersHorizontal size={20} strokeWidth={2.3} color={accentColor} />
@@ -322,82 +391,21 @@ export default function Map() {
           </div>
         )}
 
-        {showFilters && (
-          <>
-            <div
-              className="filter-overlay"
-              onClick={() => setShowFilters(false)}
-            />
-
-            <div className="filter-sheet" style={{ height: "50vh" }}>
-              <div className="filter-section">
-                <div className="filter-label">{t.map.filterRoute}</div>
-
-                <div className="filter-options">
-                  {["1", "2", "3", "4", "5", "6", "7"].map((route) => (
-                    <button
-                      key={route}
-                      type="button"
-                      className={`filter-chip ${
-                        selectedRoute === route ? "active" : ""
-                      }`}
-                      onClick={() =>
-                        setSelectedRoute(selectedRoute === route ? null : route)
-                      }
-                    >
-                      {route}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="filter-section">
-                <div className="filter-label">{t.map.filterZone}</div>
-
-                <div className="filter-options">
-                  {["1", "2", "3", "4", "5", "6", "7", "8"].map((zone) => (
-                    <button
-                      key={zone}
-                      type="button"
-                      className={`filter-chip ${
-                        selectedZone === zone ? "active" : ""
-                      }`}
-                      onClick={() =>
-                        setSelectedZone(selectedZone === zone ? null : zone)
-                      }
-                    >
-                      {zone}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="filter-actions">
-                <button
-                  type="button"
-                  className="clear-btn"
-                  onClick={() => {
-                    setSelectedRoute(null);
-                    setSelectedZone(null);
-                    setSearchTerm("");
-                    setSelectedVendor(null);
-                    setActiveRoute(null);
-                  }}
-                >
-                  {t.map.clear}
-                </button>
-
-                <button
-                  type="button"
-                  className="apply-btn"
-                  onClick={() => setShowFilters(false)}
-                >
-                  {t.map.apply}
-                </button>
-              </div>
-            </div>
-          </>
-        )}
+        <MapCategoryFilter
+          t={t}
+          open={showFilters}
+          onClose={() => setShowFilters(false)}
+          selectedCategory={pendingCategory}
+          onSelectCategory={setPendingCategory}
+          selectedRoute={pendingRoute}
+          selectedZone={pendingZone}
+          ownerGender={pendingOwner}
+          onSelectRoute={setPendingRoute}
+          onSelectZone={setPendingZone}
+          onSelectOwner={setPendingOwner}
+          onApply={applyFilters}
+          onClear={clearFilters}
+        />
 
         <BottomNav />
       </div>

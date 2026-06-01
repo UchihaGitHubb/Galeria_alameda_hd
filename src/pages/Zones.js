@@ -42,7 +42,7 @@ export default function Zones() {
               className="zones-map-image"
             />
 
-            <div className="zones-compass" aria-hidden>
+            <div className="zones-compass" aria-hidden="true">
               <span className="zones-compass__label zones-compass__label--n">
                 N
               </span>
@@ -55,8 +55,19 @@ export default function Zones() {
               <span className="zones-compass__label zones-compass__label--o">
                 O
               </span>
-              <div className="zones-compass__ring" />
-              <div className="zones-compass__needle" />
+              <div className="zones-compass__ring">
+                <svg
+                  className="zones-compass__needle"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L15.5 16H12V12H8.5L12 4Z"
+                    fill="#FFFFFF"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
 
@@ -68,11 +79,17 @@ export default function Zones() {
                 <button
                   key={zone.id}
                   type="button"
-                  className="zones-pill-btn"
+                  className="zones-pill"
+                  style={{
+                    "--zone-color": zone.color,
+                    "--zone-text": zone.textColor,
+                    "--zone-number": zone.numberColor,
+                  }}
                   onClick={() => handleZoneSelect(zone.id)}
                   aria-label={label}
                 >
-                  <img src={zone.image} alt="" />
+                  <span className="zones-pill__number">{zone.id}</span>
+                  <span className="zones-pill__label">{label}</span>
                 </button>
               );
             })}

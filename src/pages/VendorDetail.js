@@ -17,6 +17,7 @@ import BottomNav from "../components/BottomNav";
 import colombiaChiquita from "../assets/brands/colombia.png";
 
 import { isFavorite, toggleFavorite } from "../helper/favorites";
+import { getVendorPortrait } from "../helper/vendor";
 import { useTheme } from "../context/ThemeContext";
 
 import "../styles/VendorDetail.css";
@@ -69,7 +70,7 @@ export default function VendorDetail() {
         <div className="vendor-detail-content">
           <div className="vendor-avatar-wrapper">
             <div className="vendor-avatar">
-              <img src={vendor.photo} alt={vendor.name} />
+              <img src={getVendorPortrait(vendor)} alt={vendor.name} />
             </div>
 
             <img src={colombiaChiquita} alt="" className="vendor-badge" />

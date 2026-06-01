@@ -1,22 +1,54 @@
-import mapaZonas from "../assets/zones/mapa-zonas.png";
-import zona1 from "../assets/zones/zona-1.png";
-import zona2 from "../assets/zones/zona-2.png";
-import zona3 from "../assets/zones/zona-3.png";
-import zona4 from "../assets/zones/zona-4.png";
-import zona5 from "../assets/zones/zona-5.png";
-import zona6 from "../assets/zones/zona-6.png";
-import zona7 from "../assets/zones/zona-7.png";
-import zona8 from "../assets/zones/zona-8.png";
+import mapaZonas from "../assets/zones/mapa-zonas.transparent.png";
 
 export const mapaZonasImage = mapaZonas;
 
 export const ZONE_PILLS = [
-  { id: "1", image: zona1 },
-  { id: "2", image: zona2 },
-  { id: "3", image: zona3 },
-  { id: "4", image: zona4 },
-  { id: "5", image: zona5 },
-  { id: "6", image: zona6 },
-  { id: "7", image: zona7 },
-  { id: "8", image: zona8 },
+  {
+    id: "1",
+    color: "#3d8f84",
+    textColor: "#ffffff",
+    numberColor: "#3d8f84",
+  },
+  {
+    id: "2",
+    color: "#e07b52",
+    textColor: "#ffffff",
+    numberColor: "#e07b52",
+  },
+  {
+    id: "3",
+    color: "#c5d43a",
+    textColor: "#5a4635",
+    numberColor: "#c5d43a",
+  },
+  {
+    id: "4",
+    color: "#f06baa",
+    textColor: "#5a4635",
+    numberColor: "#f06baa",
+  },
+  {
+    id: "5",
+    color: "#6ba4d9",
+    textColor: "#ffffff",
+    numberColor: "#6ba4d9",
+  },
+  {
+    id: "6",
+    color: "#8b9a3c",
+    textColor: "#ffffff",
+    numberColor: "#8b9a3c",
+  },
+  {
+    id: "7",
+    color: "#f5d547",
+    textColor: "#5a4635",
+    numberColor: "#f5d547",
+  },
+  {
+    id: "8",
+    color: "#c5b4e3",
+    textColor: "#5a4635",
+    numberColor: "#c5b4e3",
+  },
 ];
